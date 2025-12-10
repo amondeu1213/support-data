@@ -1,28 +1,39 @@
-// ==========================================================
-// CONFIG — JSON URL (Cloudflare / Pages)
-// ==========================================================
+/************************************************************
+ *  SUPPORT FINDER v3 — 정적 UI 전용 (Blogger 본 블로그용)
+ *  - ai.html에 이미 HTML/CSS가 들어가 있는 구조 기준
+ *  - 이 파일은 JS 로직만 담당 (UI 생성 X, 데이터/이벤트만 처리)
+ *  - support-data.json 데이터는 Cloudflare에서 자동 로딩
+ ************************************************************/
+
+/* =========================================================
+   CONFIG
+========================================================= */
 const DATA_URL = "https://support-data.pages.dev/support-data.json";
 
-// ==========================================================
-// GLOBAL STATE
-// ==========================================================
-let ALL_SUPPORTS = [];
-let filtered = [];
-let visible = 0;
-let currentSort = "default";
+/** 👉 CTA 링크 (필요하면 여기만 수정해서 사용) */
+const CTA1_URL = "https://govfundplus.ddaengddaenge.com/p/blog-page_1.html";  // 내가 받을 수 있는 지원금 더 찾아보기
+const CTA2_URL = "https://govfundplus.ddaengddaenge.com/2025/12/5.html";      // 건강보험료 줄이는 5가지 방법
 
-let selectedAges = [];
+/* =========================================================
+   GLOBAL STATE
+========================================================= */
+let ALL_SUPPORTS = [];
+let filtered     = [];
+let visible      = 0;
+let currentSort  = "default";
+
+let selectedAges    = [];
 let selectedRegions = [];
 
 const PAGE_SIZE = 8;
-let CURRENT = null;
+let CURRENT    = null;
 
 const $  = id  => document.getElementById(id);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-// ==========================================================
-// PARSE HELPERS
-// ==========================================================
+/* =========================================================
+   PARSE HELPERS
+========================================================= */
 function parseAmountNumber(str){
   if(!str) return 0;
   const num = parseInt(String(str).replace(/[^0-9]/g,""),10);
@@ -44,15 +55,15 @@ function parseDeadlineDays(str){
   return null;
 }
 
-// ==========================================================
-// SUMMARY CALCULATIONS
-// ==========================================================
+/* =========================================================
+   SUMMARY CALCULATIONS
+========================================================= */
 function calcChanceText(item){
   let score = 0;
-  const ageMatch    = !selectedAges.length   || (item.ages || []).some(a => selectedAges.includes(a));
-  const regionMatch = !selectedRegions.length|| selectedRegions.includes(item.region);
+  const ageMatch    = !selectedAges.length    || (item.ages || []).some(a => selectedAges.includes(a));
+  const regionMatch = !selectedRegions.length || selectedRegions.includes(item.region);
 
-  if(ageMatch) score += 40;
+  if(ageMatch)    score += 40;
   if(regionMatch) score += 40;
   if(item.category) score += 20;
 
@@ -88,20 +99,20 @@ function calcDeadlineLevelText(deadline){
   return "여유 있음";
 }
 
-// ==========================================================
-// AUTO DETAIL GENERATOR
-// ==========================================================
+/* =========================================================
+   AUTO DETAIL TEXT
+========================================================= */
 function detectCategoryType(item){
-  const cat = (item.category || "").toLowerCase();
-  const title = (item.title || "").toLowerCase();
+  const cat   = (item.category || "").toLowerCase();
+  const title = (item.title    || "").toLowerCase();
 
-  if(cat.includes("주거") || cat.includes("월세") || title.includes("월세") || title.includes("전세")) return "housing";
-  if(cat.includes("취업") || cat.includes("일자리") || cat.includes("교육") || title.includes("배움") || title.includes("교육")) return "job";
-  if(cat.includes("생활") || cat.includes("교통") || cat.includes("에너지") || title.includes("바우처")) return "living";
-  if(cat.includes("의료") || cat.includes("건강") || title.includes("의료") || title.includes("건강")) return "medical";
-  if(cat.includes("소상공인") || cat.includes("사업") || title.includes("소상공인")) return "business";
-  if(cat.includes("노인") || cat.includes("고령") || title.includes("돌봄") || title.includes("기초연금")) return "senior";
-  if(cat.includes("가정") || title.includes("한부모")) return "family";
+  if(cat.includes("주거")       || cat.includes("월세")   || title.includes("월세") || title.includes("전세")) return "housing";
+  if(cat.includes("취업")       || cat.includes("일자리") || cat.includes("교육")  || title.includes("배움") || title.includes("교육")) return "job";
+  if(cat.includes("생활")       || cat.includes("교통")   || cat.includes("에너지")|| title.includes("바우처")) return "living";
+  if(cat.includes("의료")       || cat.includes("건강")   || title.includes("의료") || title.includes("건강")) return "medical";
+  if(cat.includes("소상공인")   || cat.includes("사업")   || title.includes("소상공인")) return "business";
+  if(cat.includes("노인")       || cat.includes("고령")   || title.includes("돌봄") || title.includes("기초연금")) return "senior";
+  if(cat.includes("가정")       || title.includes("한부모")) return "family";
   return "generic";
 }
 
@@ -248,9 +259,9 @@ function buildAutoDetail(item){
   return { overview, target, benefit, method, caution };
 }
 
-// ==========================================================
-// LOAD SUPPORTS
-// ==========================================================
+/* =========================================================
+   LOAD SUPPORTS
+========================================================= */
 async function loadSupportData(){
   const res  = await fetch(DATA_URL);
   const json = await res.json();
@@ -260,7 +271,7 @@ async function loadSupportData(){
   const ages      = json.ages || [];
   const ageGroups = json.ageGroups || {};
 
-  let id = 1;
+  let id   = 1;
   const list = [];
 
   templates.forEach(tpl=>{
@@ -268,33 +279,32 @@ async function loadSupportData(){
 
     regions.forEach(region=>{
       list.push({
-        id: id++,
-        code: tpl.code,
+        id:       id++,
+        code:     tpl.code,
         region,
-        title: `${tpl.titlePrefix || ""} ${region} ${tpl.titleSuffix || ""}`.trim(),
-        summary: tpl.summary || "",
-        amount: tpl.amount || "",
+        title:    `${tpl.titlePrefix || ""} ${region} ${tpl.titleSuffix || ""}`.trim(),
+        summary:  tpl.summary  || "",
+        amount:   tpl.amount   || "",
         deadline: tpl.deadline || "",
-        ages: tplAges,
+        ages:     tplAges,
         category: tpl.category || "",
         overview: tpl.overview || "",
-        detail: tpl.detail || {}
+        detail:   tpl.detail   || {}
       });
     });
   });
 
   ALL_SUPPORTS = list;
-  console.log("🔥 Loaded supports:", ALL_SUPPORTS.length);
 }
 
-// ==========================================================
-// LOAD CHIPS
-// ==========================================================
+/* =========================================================
+   LOAD CHIPS
+========================================================= */
 async function renderChipsFromConfig(){
   const res  = await fetch(DATA_URL);
   const json = await res.json();
 
-  const ages    = json.ages || [];
+  const ages    = json.ages    || [];
   const regions = json.regions || [];
 
   $("ageChips").innerHTML =
@@ -311,7 +321,7 @@ async function renderChipsFromConfig(){
         const v = chip.dataset.age;
         if(chip.classList.contains("active")){
           if(!selectedAges.includes(v)) selectedAges.push(v);
-        } else {
+        }else{
           selectedAges = selectedAges.filter(x=>x!==v);
         }
       }
@@ -320,7 +330,7 @@ async function renderChipsFromConfig(){
         const v = chip.dataset.region;
         if(chip.classList.contains("active")){
           if(!selectedRegions.includes(v)) selectedRegions.push(v);
-        } else {
+        }else{
           selectedRegions = selectedRegions.filter(x=>x!==v);
         }
       }
@@ -340,9 +350,9 @@ function renderTags(){
   $("selectedTags").textContent = txt;
 }
 
-// ==========================================================
-// SORT
-// ==========================================================
+/* =========================================================
+   SORT
+========================================================= */
 function parseDeadlineForSort(deadline){
   if(!deadline) return 9999;
   const d = String(deadline).trim();
@@ -357,19 +367,20 @@ function parseDeadlineForSort(deadline){
 function applySort(){
   if(currentSort === "deadline"){
     filtered.sort((a,b)=> parseDeadlineForSort(a.deadline) - parseDeadlineForSort(b.deadline));
-  } else if(currentSort === "amount"){
+  }else if(currentSort === "amount"){
     filtered.sort((a,b)=> parseAmountNumber(b.amount) - parseAmountNumber(a.amount));
   }
 }
 
-// ==========================================================
-// SEARCH
-// ==========================================================
+/* =========================================================
+   SEARCH
+========================================================= */
 function search(){
   filtered = ALL_SUPPORTS.filter(item=>{
     const ageOK =
       !selectedAges.length || (item.ages||[]).some(a=>selectedAges.includes(a));
-    const regionOK = !selectedRegions.length || selectedRegions.includes(item.region);
+    const regionOK =
+      !selectedRegions.length || selectedRegions.includes(item.region);
     return ageOK && regionOK;
   });
 
@@ -385,7 +396,7 @@ function search(){
         <p style="font-size:12px;margin-top:4px;">연령 또는 지역을 조금 넓혀서 다시 검색해보세요.</p>
       </div>`;
     $("resultCount").textContent = "0개";
-    $("loadMore").style.display = "none";
+    $("loadMore").style.display  = "none";
     $("sf3DetailSection").style.display = "none";
     return;
   }
@@ -394,9 +405,9 @@ function search(){
   $("resultCount").textContent = `${filtered.length}개`;
 }
 
-// ==========================================================
-// CARD RENDER
-// ==========================================================
+/* =========================================================
+   CARD RENDER
+========================================================= */
 function renderMore(){
   const grid  = $("cardGrid");
   const slice = filtered.slice(visible, visible + PAGE_SIZE);
@@ -429,9 +440,9 @@ function renderMore(){
   $("loadMore").style.display = visible < filtered.length ? "block" : "none";
 }
 
-// ==========================================================
-// DETAIL PAGE
-// ==========================================================
+/* =========================================================
+   DETAIL PAGE
+========================================================= */
 function openDetail(item){
   CURRENT = item;
 
@@ -484,55 +495,56 @@ function openDetail(item){
   if(item.detail?.link){
     etcHTML += `<p>공식 링크 : <a href="${item.detail.link}" target="_blank" style="color:#2563EB;text-decoration:underline;">바로가기</a></p>`;
   }
-  $("sf3DetailEtc").innerHTML = etcHTML || `<p>자세한 내용은 각 부처 및 지자체 공고를 참고하세요.</p>`;
+  $("sf3DetailEtc").innerHTML =
+    etcHTML || `<p>자세한 내용은 각 부처 및 지자체 공고를 참고하세요.</p>`;
 
   renderRecommendations(item);
 
-  document.querySelector("#sf3DetailSection")
-    .scrollIntoView({behavior:"smooth", block:"start"});
+  $("sf3DetailSection").scrollIntoView({behavior:"smooth", block:"start"});
 }
 
-// ==========================================================
-// 추천 지원금 (TOP3)
-// ==========================================================
-function renderRecommendations(current) {
+/* =========================================================
+   RECOMMENDATIONS
+========================================================= */
+function renderRecommendations(current){
   const box = $("sf3DetailRecommends");
 
   const unique = {};
-  ALL_SUPPORTS.forEach(item => {
-    if (!unique[item.code]) unique[item.code] = item;
+  ALL_SUPPORTS.forEach(item=>{
+    if(!unique[item.code]) unique[item.code] = item;
   });
 
   let list = Object.values(unique).filter(it => it.code !== current.code);
 
-  function score(item) {
+  function score(item){
     let s = 0;
     const amt = parseAmountNumber(item.amount);
-    if (amt >= 100000000) s += 50;
-    else if (amt >= 10000000) s += 40;
-    else if (amt >= 1000000) s += 30;
-    else if (amt >= 100000) s += 20;
-    else s += 10;
+
+    if(amt >= 100000000)      s += 50;
+    else if(amt >= 10000000)  s += 40;
+    else if(amt >= 1000000)   s += 30;
+    else if(amt >= 100000)    s += 20;
+    else                      s += 10;
 
     const c = calcChanceText(item);
-    if (c === "높음") s += 30;
-    else if (c === "보통") s += 15;
-    else s += 5;
+    if(c === "높음")      s += 30;
+    else if(c === "보통") s += 15;
+    else                  s += 5;
 
     const d = calcDifficultyText(item);
-    if (d === "쉬움") s += 20;
-    else if (d === "보통") s += 10;
-    else s += 5;
+    if(d === "쉬움")      s += 20;
+    else if(d === "보통") s += 10;
+    else                  s += 5;
 
     return s;
   }
 
   list = list
-    .map(it => ({ ...it, score: score(it) }))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3);
+    .map(it => ({...it, score: score(it)}))
+    .sort((a,b)=> b.score - a.score)
+    .slice(0,3);
 
-  if (!list.length) {
+  if(!list.length){
     box.innerHTML = `
       <div class="sf3-detail-reco-item">
         추천할 다른 지원금이 없습니다.
@@ -540,53 +552,61 @@ function renderRecommendations(current) {
     return;
   }
 
-  box.innerHTML = list
-    .map((it, idx) => {
-      const difficulty = calcDifficultyText(it);
-      const deadlineLv = calcDeadlineLevelText(it.deadline);
+  box.innerHTML = list.map((it, idx)=>{
+    const deadlineLv = calcDeadlineLevelText(it.deadline);
+    const difficulty = calcDifficultyText(it);
 
-      let tagText = "";
-      let color = "";
+    let tagText = "";
+    let color   = "";
 
-      if (idx === 0) {
-        tagText = "신청 성공률 높음";
-        color = "#2563EB";
-      } else if (idx === 1) {
-        tagText = (difficulty === "쉬움") ? "신청 난이도 쉬움" : "마감 일정 여유 있음";
-        color = (difficulty === "쉬움") ? "#16A34A" : "#D97706";
-      } else {
-        tagText = deadlineLv.includes("임박") ? "마감 임박" : "마감 일정 확인 필요";
-        color = deadlineLv.includes("임박") ? "#DC2626" : "#6B7280";
+    if(idx === 0){
+      tagText = "신청 성공률 높음";
+      color   = "#2563EB";
+    }else if(idx === 1){
+      if(difficulty === "쉬움"){
+        tagText = "신청 난이도 쉬움";
+        color   = "#16A34A";
+      }else{
+        tagText = "마감 일정 여유 있음";
+        color   = "#D97706";
       }
+    }else{
+      if(deadlineLv.includes("임박")){
+        tagText = "마감 임박";
+        color   = "#DC2626";
+      }else{
+        tagText = "마감 일정 확인 필요";
+        color   = "#6B7280";
+      }
+    }
 
-      return `
-        <div class="sf3-detail-reco-item" data-id="${it.id}">
-          <div class="sf3-detail-reco-title">${it.title}</div>
-          <div class="sf3-detail-reco-meta">${it.region} · ${it.amount}</div>
-          <div style="font-size:11px; margin-top:2px; color:${color};">
-            ${tagText}
-          </div>
+    return `
+      <div class="sf3-detail-reco-item" data-id="${it.id}">
+        <div class="sf3-detail-reco-title">${it.title}</div>
+        <div class="sf3-detail-reco-meta">${it.region} · ${it.amount}</div>
+        <div style="font-size:11px;margin-top:2px;color:${color};">
+          ${tagText}
         </div>
-      `;
-    })
-    .join("");
+      </div>
+    `;
+  }).join("");
 
-  $$(".sf3-detail-reco-item").forEach(el => {
-    el.onclick = () => {
+  $$(".sf3-detail-reco-item").forEach(el=>{
+    el.onclick = ()=>{
       const id = Number(el.dataset.id);
-      const target = ALL_SUPPORTS.find(x => x.id === id);
-      if (target) openDetail(target);
+      const t  = ALL_SUPPORTS.find(x=>x.id === id);
+      if(t) openDetail(t);
     };
   });
 }
 
-// ==========================================================
-// MODAL
-// ==========================================================
+/* =========================================================
+   MODAL
+========================================================= */
 function openModal(item){
   CURRENT = item;
 
-  $("sf3ModalTitle").textContent = item.title || "";
+  $("sf3ModalTitle").textContent = item.title   || "";
   $("sf3ModalDesc").textContent  = item.summary || "";
   $("sf3ModalMeta").textContent  =
     `${item.region || "-"} · ${(item.ages||[]).join(", ") || "-"} · ${item.category || "-"}`;
@@ -598,21 +618,19 @@ function closeModal(){
   $("sf3ModalBackdrop").style.display = "none";
 }
 
-// ==========================================================
-// CTA BINDING (모달 + 상세 공통)
-// ==========================================================
+/* =========================================================
+   CTA BINDING
+========================================================= */
 function bindModalCtas(){
-  // CTA1 → 메인 검색기
-  $("sf3ModalCtaMain").onclick = () =>
-    window.open("https://worldvustomguide.blogspot.com/p/blog-page_1.html","_blank");
-  $("sf3DetailCtaMain").onclick = () =>
-    window.open("https://worldvustomguide.blogspot.com/p/blog-page_1.html","_blank");
+  $("sf3ModalCtaMain").onclick  =
+    () => window.open(CTA1_URL, "_blank");
+  $("sf3DetailCtaMain").onclick =
+    () => window.open(CTA1_URL, "_blank");
 
-  // CTA2 → 건강보험료 줄이는 5가지 방법
-  $("sf3ModalCtaSub").onclick = () =>
-    window.open("https://worldvustomguide.blogspot.com/2025/12/5.html","_blank");
-  $("sf3DetailCtaSub").onclick = () =>
-    window.open("https://worldvustomguide.blogspot.com/2025/12/5.html","_blank");
+  $("sf3ModalCtaSub").onclick  =
+    () => window.open(CTA2_URL, "_blank");
+  $("sf3DetailCtaSub").onclick =
+    () => window.open(CTA2_URL, "_blank");
 
   $("sf3ModalDetailBtn").onclick = ()=>{
     closeModal();
@@ -621,9 +639,9 @@ function bindModalCtas(){
   $("sf3ModalCloseBtn").onclick = closeModal;
 }
 
-// ==========================================================
-// EVENT BIND
-// ==========================================================
+/* =========================================================
+   EVENT BIND
+========================================================= */
 function bindEvents(){
   $("searchBtn").onclick = search;
   $("loadMore").onclick  = renderMore;
@@ -655,17 +673,16 @@ function bindEvents(){
   };
 }
 
-// ==========================================================
-// INIT
-// ==========================================================
+/* =========================================================
+   INIT
+========================================================= */
 async function init(){
   try{
-    console.log("⏳ 데이터 로딩 중...");
     await renderChipsFromConfig();
     await loadSupportData();
     bindEvents();
     bindModalCtas();
-    console.log("✅ 초기 로딩 완료 (검색 버튼을 누르면 결과가 표시됩니다.)");
+    console.log("✅ Support Finder 정적 UI 초기화 완료");
   }catch(e){
     console.error("❌ 초기화 오류:", e);
   }
