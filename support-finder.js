@@ -1,7 +1,6 @@
 /************************************************************
  *  SUPPORT FINDER v3 — 정적 UI 전용 (Blogger 본 블로그용)
- *  - HTML/CSS 이미 존재하는 페이지 기준
- *  - JS는 데이터 로딩 + 검색 + 정렬 + 모달 + 상세 출력만 담당
+ *  - 특수문자(·) 자동 변환 문제 해결 → 안전한 bullet(•) 사용
  ************************************************************/
 
 /* =========================================================
@@ -16,43 +15,46 @@ const CTA2_URL = "https://govfundplus.ddaengddaenge.com/2025/12/5.html";
    GLOBAL
 ========================================================= */
 let ALL_SUPPORTS = [];
-let filtered = [];
-let visible = 0;
-let currentSort = "default";
-
+let filtered     = [];
+let visible      = 0;
+let currentSort  = "default";
 let selectedAges = [];
 let selectedRegions = [];
-
-const PAGE_SIZE = 8;
 let CURRENT = null;
 
-const $ = id => document.getElementById(id);
+const PAGE_SIZE = 8;
+const $  = id  => document.getElementById(id);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 
+/* 안전한 bullet 문자 */
+const SEP = " • ";
+
 /* =========================================================
-   HELPERS
+   PARSE HELPERS
 ========================================================= */
 function parseAmountNumber(str){
   if(!str) return 0;
   const num = parseInt(String(str).replace(/[^0-9]/g,""),10);
   if(isNaN(num)) return 0;
-  if(str.includes("억")) return num * 100000000;
+  if(str.includes("억"))   return num * 100000000;
   if(str.includes("천만")) return num * 10000000;
-  if(str.includes("만")) return num * 10000;
+  if(str.includes("만"))   return num * 10000;
   return num;
 }
 
 function parseDeadlineDays(str){
   if(!str) return null;
+  str = String(str).trim();
   if(str.startsWith("D-")){
     const n = parseInt(str.replace("D-",""),10);
     return isNaN(n) ? null : n;
   }
+  if(["상시","수시","연중"].includes(str)) return null;
   return null;
 }
 
 /* =========================================================
-   SUMMARY
+   SUMMARY TEXT
 ========================================================= */
 function calcChanceText(item){
   let score = 0;
@@ -70,23 +72,20 @@ function calcChanceText(item){
 
 function calcDifficultyText(item){
   const txt = (item.detail?.method || "").toLowerCase();
-  if(!txt) return "보통";
-
-  const hasOnline = /온라인|인터넷|복지로|정부24/.test(txt);
-  const hasVisit  = /방문|센터|주민센터/.test(txt);
+  const hasOnline = /온라인|홈페이지|정부24|복지로|인터넷/.test(txt);
+  const hasVisit  = /방문|센터|주민센터|창구/.test(txt);
   const hasDocs   = /서류|증빙|심사/.test(txt);
 
   if(hasOnline && !hasVisit) return "쉬움";
-  if(hasOnline && hasVisit) return "보통";
-  if(hasVisit && hasDocs) return "어려움";
+  if(hasOnline && hasVisit)  return "보통";
+  if(hasVisit  && hasDocs)   return "어려움";
   return "보통";
 }
 
 function calcDeadlineLevelText(deadline){
   if(!deadline) return "일정 확인 필요";
   const d = String(deadline).trim();
-
-  if(["상시","연중","수시"].includes(d)) return "상시 진행";
+  if(["상시","수시","연중"].includes(d)) return "상시 진행";
 
   const days = parseDeadlineDays(d);
   if(days == null) return "마감 일정 확인 필요";
@@ -97,30 +96,10 @@ function calcDeadlineLevelText(deadline){
 }
 
 /* =========================================================
-   AUTO DETAIL TEXT
-========================================================= */
-function detectCategoryType(item){
-  const cat = (item.category || "").toLowerCase();
-  const t = (item.title || "").toLowerCase();
-
-  if(cat.includes("주거") || t.includes("월세")) return "housing";
-  if(cat.includes("취업") || cat.includes("교육")) return "job";
-  if(cat.includes("생활") || cat.includes("에너지")) return "living";
-  if(cat.includes("의료") || cat.includes("건강")) return "medical";
-  if(cat.includes("소상공인")) return "business";
-  if(cat.includes("노인")) return "senior";
-  if(cat.includes("가정")) return "family";
-  return "generic";
-}
-
-// (❗ 그대로 유지 — 생략 가능하지만 요청 시 전체 다시 보여줌)
-function buildAutoDetail(item){ /* 그대로 유지 */ }
-
-/* =========================================================
-   LOAD SUPPORTS
+   LOAD SUPPORT DATA
 ========================================================= */
 async function loadSupportData(){
-  const res = await fetch(DATA_URL);
+  const res  = await fetch(DATA_URL);
   const json = await res.json();
 
   const templates = json.programTemplates || [];
@@ -128,25 +107,24 @@ async function loadSupportData(){
   const ages      = json.ages || [];
   const ageGroups = json.ageGroups || {};
 
-  let id = 1;
   const list = [];
+  let id = 1;
 
-  templates.forEach(tpl => {
+  templates.forEach(tpl=>{
     const tplAges = ageGroups[tpl.agesKey] || ages;
-
-    regions.forEach(region => {
+    regions.forEach(region=>{
       list.push({
-        id: id++,
-        code: tpl.code,
+        id:       id++,
+        code:     tpl.code,
         region,
-        title: `${tpl.titlePrefix || ""} ${region} ${tpl.titleSuffix || ""}`.trim(),
-        summary: tpl.summary || "",
-        amount: tpl.amount || "",
+        title:    `${tpl.titlePrefix || ""} ${region} ${tpl.titleSuffix || ""}`.trim(),
+        summary:  tpl.summary  || "",
+        amount:   tpl.amount   || "",
         deadline: tpl.deadline || "",
-        ages: tplAges,
+        ages:     tplAges,
         category: tpl.category || "",
-        detail: tpl.detail || {},
-        overview: tpl.overview || ""
+        overview: tpl.overview || "",
+        detail:   tpl.detail   || {}
       });
     });
   });
@@ -155,41 +133,37 @@ async function loadSupportData(){
 }
 
 /* =========================================================
-   RENDER FILTER CHIPS
+   LOAD CHIPS
 ========================================================= */
 async function renderChipsFromConfig(){
-  const res = await fetch(DATA_URL);
+  const res  = await fetch(DATA_URL);
   const json = await res.json();
 
-  const ages = json.ages || [];
+  const ages    = json.ages || [];
   const regions = json.regions || [];
 
-  $("ageChips").innerHTML = ages
-    .map(a => `<button class="sf3-chip" data-age="${a}">${a}</button>`).join("");
+  $("ageChips").innerHTML =
+    ages.map(a => `<button class="sf3-chip" data-age="${a}">${a}</button>`).join("");
 
-  $("regionChips").innerHTML = regions
-    .map(r => `<button class="sf3-chip" data-region="${r}">${r}</button>`).join("");
+  $("regionChips").innerHTML =
+    regions.map(r => `<button class="sf3-chip" data-region="${r}">${r}</button>`).join("");
 
-  $$(".sf3-chip").forEach(chip => {
-    chip.onclick = () => {
+  $$(".sf3-chip").forEach(chip=>{
+    chip.onclick = ()=>{
       chip.classList.toggle("active");
 
       if(chip.dataset.age){
         const v = chip.dataset.age;
-        if(chip.classList.contains("active")){
-          if(!selectedAges.includes(v)) selectedAges.push(v);
-        } else {
-          selectedAges = selectedAges.filter(x => x !== v);
-        }
+        chip.classList.contains("active")
+          ? selectedAges.push(v)
+          : selectedAges = selectedAges.filter(x=>x!==v);
       }
 
       if(chip.dataset.region){
         const v = chip.dataset.region;
-        if(chip.classList.contains("active")){
-          if(!selectedRegions.includes(v)) selectedRegions.push(v);
-        } else {
-          selectedRegions = selectedRegions.filter(x => x !== v);
-        }
+        chip.classList.contains("active")
+          ? selectedRegions.push(v)
+          : selectedRegions = selectedRegions.filter(x=>x!==v);
       }
 
       renderTags();
@@ -208,31 +182,19 @@ function renderTags(){
 }
 
 /* =========================================================
-   SORT
-========================================================= */
-function parseDeadlineForSort(d){
-  if(!d) return 9999;
-  if(String(d).startsWith("D-")){
-    const n = parseInt(d.replace("D-",""),10);
-    return isNaN(n) ? 9999 : n;
-  }
-  return 9999;
-}
-
-function applySort(){
-  if(currentSort === "deadline"){
-    filtered.sort((a,b)=>parseDeadlineForSort(a.deadline) - parseDeadlineForSort(b.deadline));
-  } else if(currentSort === "amount"){
-    filtered.sort((a,b)=>parseAmountNumber(b.amount) - parseAmountNumber(a.amount));
-  }
-}
-
-/* =========================================================
    SEARCH
 ========================================================= */
+function applySort(){
+  if(currentSort === "deadline"){
+    filtered.sort((a,b)=> parseDeadlineDays(a.deadline) - parseDeadlineDays(b.deadline));
+  } else if(currentSort === "amount"){
+    filtered.sort((a,b)=> parseAmountNumber(b.amount) - parseAmountNumber(a.amount));
+  }
+}
+
 function search(){
   filtered = ALL_SUPPORTS.filter(item=>{
-    const ageOK = !selectedAges.length || item.ages.some(a=>selectedAges.includes(a));
+    const ageOK = !selectedAges.length || (item.ages || []).some(a => selectedAges.includes(a));
     const regionOK = !selectedRegions.length || selectedRegions.includes(item.region);
     return ageOK && regionOK;
   });
@@ -245,13 +207,10 @@ function search(){
     $("cardGrid").innerHTML = `
       <div class="sf3-empty">
         <div class="emoji">😢</div>
-        <p><b>조건에 맞는 지원금이 없습니다.</b></p>
-        <p style="font-size:12px;margin-top:4px;">연령 또는 지역을 넓혀 다시 검색하세요.</p>
+        <b>조건에 맞는 지원금이 없습니다.</b>
       </div>
     `;
-    $("resultCount").textContent = "0개";
     $("loadMore").style.display = "none";
-    $("sf3DetailSection").style.display = "none";
     return;
   }
 
@@ -260,7 +219,7 @@ function search(){
 }
 
 /* =========================================================
-   CARD RENDER
+   RENDER CARDS
 ========================================================= */
 function renderMore(){
   const grid = $("cardGrid");
@@ -270,20 +229,11 @@ function renderMore(){
     const card = document.createElement("div");
     card.className = "sf3-card";
 
-    const showDeadline = item.deadline?.startsWith("D-");
-
     card.innerHTML = `
       <div class="sf3-badge-region">${item.region}</div>
-      ${showDeadline ? `<div class="sf3-badge-deadline">${item.deadline}</div>` : ""}
-      <div class="sf3-card-content">
-        <div class="sf3-card-title">${item.title}</div>
-        <div class="sf3-card-desc">${item.summary}</div>
-      </div>
-      <div class="sf3-card-footer">
-        <div class="sf3-card-amount">${item.amount}</div>
-        <div class="sf3-card-deadline">마감: ${item.deadline || "확인 필요"}</div>
-        <div class="sf3-card-cta">자세히 보기 →</div>
-      </div>
+      <div class="sf3-card-title">${item.title}</div>
+      <div class="sf3-card-desc">${item.summary}</div>
+      <div class="sf3-card-deadline">마감: ${item.deadline}</div>
     `;
 
     card.onclick = ()=> openModal(item);
@@ -295,80 +245,14 @@ function renderMore(){
 }
 
 /* =========================================================
-   DETAIL PAGE
+   DETAIL PAGE META 출력 개선 (• 적용)
 ========================================================= */
-function openDetail(item){
-  CURRENT = item;
+function buildMeta(item){
+  const region = item.region || "-";
+  const ages   = (item.ages || []).join(", ") || "-";
+  const cat    = item.category || "-";
 
-  const auto = buildAutoDetail(item);
-
-  $("sf3DetailSection").style.display = "block";
-
-  $("sf3DetailTitle").textContent = item.title;
-
-  /* 🔥 특수문자 구분자 통일 — HTML 엔티티 제거 */
-  $("sf3DetailMeta").innerHTML = `
-    <p>📍 지역: ${item.region}</p>
-    <p>👤 연령: ${item.ages.join(", ")}</p>
-    <p>🏷 분야: ${item.category}</p>
-    <p>📅 마감일: ${item.deadline}</p>
-  `;
-
-  $("sf3SummaryChance").textContent = calcChanceText(item);
-  $("sf3SummaryAmount").textContent = item.amount;
-  $("sf3SummaryDifficulty").textContent = calcDifficultyText(item);
-  $("sf3SummaryDeadlineLevel").textContent = calcDeadlineLevelText(item.deadline);
-
-  $("sf3DetailOverview").innerHTML = `<p>${item.overview || auto.overview}</p>`;
-  $("sf3DetailTarget").innerHTML = `<p>${item.detail?.target || auto.target}</p>`;
-  $("sf3DetailBenefit").innerHTML = `<p><strong>지원 금액:</strong> ${item.amount}</p><p>${item.detail?.benefit || auto.benefit}</p>`;
-  $("sf3DetailMethod").innerHTML = `<p>${item.detail?.method || auto.method}</p>`;
-  $("sf3DetailCaution").innerHTML = `<p>${item.detail?.caution || auto.caution}</p>`;
-
-  $("sf3DetailEtc").innerHTML =
-    item.detail?.link
-      ? `<p>공식 링크: <a href="${item.detail.link}" target="_blank">바로가기</a></p>`
-      : `<p>자세한 내용은 공고문 참고</p>`;
-
-  renderRecommendations(item);
-}
-
-/* =========================================================
-   RECOMMENDATIONS
-========================================================= */
-function renderRecommendations(current){
-  const box = $("sf3DetailRecommends");
-
-  const unique = {};
-  ALL_SUPPORTS.forEach(item=>{ if(!unique[item.code]) unique[item.code] = item; });
-
-  let list = Object.values(unique).filter(it => it.code !== current.code);
-
-  function score(item){
-    let s = 0;
-    s += parseAmountNumber(item.amount);
-    if(calcChanceText(item)==="높음") s+=50;
-    return s;
-  }
-
-  list = list.map(it=>({...it,score:score(it)}))
-             .sort((a,b)=>b.score - a.score)
-             .slice(0,3);
-
-  box.innerHTML = list.map(it => `
-    <div class="sf3-detail-reco-item" data-id="${it.id}">
-      <div>${it.title}</div>
-      <div style="font-size:11px;color:#6B7280;">${it.region} · ${it.amount}</div>
-    </div>
-  `).join("");
-
-  $$(".sf3-detail-reco-item").forEach(el=>{
-    el.onclick = ()=>{
-      const id = Number(el.dataset.id);
-      const t = ALL_SUPPORTS.find(x=>x.id===id);
-      if(t) openDetail(t);
-    };
-  });
+  return `${region}${SEP}${ages}${SEP}${cat}`;
 }
 
 /* =========================================================
@@ -378,11 +262,10 @@ function openModal(item){
   CURRENT = item;
 
   $("sf3ModalTitle").textContent = item.title;
-  $("sf3ModalDesc").textContent = item.summary;
+  $("sf3ModalDesc").textContent  = item.summary;
 
-  /* 🔥 여기 특수문자· 통일 */
-  $("sf3ModalMeta").textContent =
-    `${item.region} · ${item.ages.join(", ")} · ${item.category}`;
+  /* 여기! Bullet(•) 로 표시 */
+  $("sf3ModalMeta").textContent = buildMeta(item);
 
   $("sf3ModalBackdrop").style.display = "flex";
 }
@@ -392,14 +275,48 @@ function closeModal(){
 }
 
 /* =========================================================
+   DETAIL PAGE
+========================================================= */
+function openDetail(item){
+  CURRENT = item;
+
+  $("sf3DetailSection").style.display = "block";
+
+  $("sf3DetailTitle").textContent = item.title;
+
+  $("sf3DetailMeta").innerHTML = `
+    <p>${buildMeta(item)}</p>
+    <p>마감: ${item.deadline}</p>
+  `;
+
+  $("sf3SummaryChance").textContent        = calcChanceText(item);
+  $("sf3SummaryAmount").textContent        = item.amount;
+  $("sf3SummaryDifficulty").textContent    = calcDifficultyText(item);
+  $("sf3SummaryDeadlineLevel").textContent = calcDeadlineLevelText(item.deadline);
+
+  $("sf3DetailOverview").innerHTML = `<p>${item.overview}</p>`;
+  $("sf3DetailTarget").innerHTML   = `<p>${item.detail?.target || ""}</p>`;
+  $("sf3DetailBenefit").innerHTML  = `<p>${item.detail?.benefit || ""}</p>`;
+  $("sf3DetailMethod").innerHTML   = `<p>${item.detail?.method || ""}</p>`;
+  $("sf3DetailCaution").innerHTML  = `<p>${item.detail?.caution || ""}</p>`;
+
+  $("sf3DetailEtc").innerHTML = `
+    ${item.detail?.contact ? `<p>문의: ${item.detail.contact}</p>` : ""}
+    ${item.detail?.link ? `<p><a href="${item.detail.link}" target="_blank">공식 링크</a></p>` : ""}
+  `;
+
+  $("sf3DetailSection").scrollIntoView({behavior:"smooth"});
+}
+
+/* =========================================================
    CTA
 ========================================================= */
 function bindModalCtas(){
-  $("sf3ModalCtaMain").onclick = ()=> window.open(CTA1_URL);
-  $("sf3ModalCtaSub").onclick  = ()=> window.open(CTA2_URL);
+  $("sf3ModalCtaMain").onclick = ()=> window.open(CTA1_URL, "_blank");
+  $("sf3DetailCtaMain").onclick = ()=> window.open(CTA1_URL, "_blank");
 
-  $("sf3DetailCtaMain").onclick = ()=> window.open(CTA1_URL);
-  $("sf3DetailCtaSub").onclick  = ()=> window.open(CTA2_URL);
+  $("sf3ModalCtaSub").onclick = ()=> window.open(CTA2_URL, "_blank");
+  $("sf3DetailCtaSub").onclick = ()=> window.open(CTA2_URL, "_blank");
 
   $("sf3ModalDetailBtn").onclick = ()=>{
     closeModal();
@@ -410,8 +327,16 @@ function bindModalCtas(){
 }
 
 /* =========================================================
-   EVENTS
+   INIT
 ========================================================= */
+async function init(){
+  await renderChipsFromConfig();
+  await loadSupportData();
+  bindEvents();
+  bindModalCtas();
+  console.log("지원금 검색기 초기화 완료");
+}
+
 function bindEvents(){
   $("searchBtn").onclick = search;
   $("loadMore").onclick = renderMore;
@@ -421,13 +346,7 @@ function bindEvents(){
       $$(".sf3-sort-btn").forEach(b=>b.classList.remove("active"));
       btn.classList.add("active");
       currentSort = btn.dataset.sort;
-
-      if(filtered.length){
-        applySort();
-        visible = 0;
-        $("cardGrid").innerHTML = "";
-        renderMore();
-      }
+      search();
     };
   });
 
@@ -439,17 +358,6 @@ function bindEvents(){
     $("sf3DetailSection").style.display = "none";
     $("cardGrid").scrollIntoView({behavior:"smooth"});
   };
-}
-
-/* =========================================================
-   INIT
-========================================================= */
-async function init(){
-  await renderChipsFromConfig();
-  await loadSupportData();
-  bindEvents();
-  bindModalCtas();
-  console.log("✅ Support Finder 정적 UI 초기화 완료");
 }
 
 document.addEventListener("DOMContentLoaded", init);
