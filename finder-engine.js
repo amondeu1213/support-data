@@ -360,7 +360,7 @@ function FE_openDetail(item) {
 
   $("#feDetailBenefit").textContent =
     (item.detail && item.detail.benefit) ||
-    (item.amount || "지원 금액은 지자체 공고문을 참고해 주세요.");
+    (item.amount || "지원 금액은 지자체 공고문을 참고해 주세요.";
 
   $("#feDetailMethod").textContent =
     (item.detail && item.detail.method) ||
