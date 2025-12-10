@@ -1,0 +1,1389 @@
+{
+  "ageGroups": {
+    "all": [
+      "20대",
+      "30대",
+      "40대",
+      "50대",
+      "60대",
+      "70대"
+    ],
+    "jobplus": [
+      "20대",
+      "30대",
+      "40대"
+    ],
+    "mid": [
+      "30대",
+      "40대",
+      "50대"
+    ],
+    "senior": [
+      "60대",
+      "70대"
+    ],
+    "youth": [
+      "20대",
+      "30대"
+    ]
+  },
+  "ages": [
+    "20대",
+    "30대",
+    "40대",
+    "50대",
+    "60대",
+    "70대"
+  ],
+  "programTemplates": [
+    {
+      "agesKey": "youth",
+      "amount": "월 20~30만 원",
+      "category": "주거",
+      "code": "P001",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "월세 일부를 바우처 또는 현금성으로 지원",
+        "caution": "지역별 소득 기준 및 지원기간 상이, 예산 소진 시 조기 마감 가능",
+        "contact": "거주지 시·군·구 주거복지 부서",
+        "link": "https://www.gov.kr",
+        "method": "복지로 또는 거주지 지자체 홈페이지에서 온라인 신청",
+        "target": "무주택 청년 세대주 또는 세대원"
+      },
+      "overview": "만 19~34세 청년을 대상으로 월세 일부를 지원하는 제도입니다.",
+      "source": "지자체",
+      "summary": "청년 주거비 경감 프로그램",
+      "titleSuffix": "청년 월세 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "월 50만 원, 최대 6개월",
+      "category": "일자리",
+      "code": "P002",
+      "deadline": "상시(예산 범위 내)",
+      "detail": {
+        "benefit": "월 50만 원 상당 구직활동 지원금",
+        "caution": "월별 구직활동 보고 의무, 부정수급 시 전액 환수",
+        "contact": "고용노동부 고객상담센터 1350",
+        "link": "https://www.work.go.kr",
+        "method": "온라인 청년센터 또는 워크넷을 통해 신청",
+        "target": "졸업 후 미취업 상태인 청년"
+      },
+      "overview": "미취업 청년이 안정적으로 취업을 준비할 수 있도록 월 단위 지원금을 제공합니다.",
+      "source": "고용노동부",
+      "summary": "취업준비 청년에게 구직활동비를 지원하는 제도",
+      "titleSuffix": "청년 구직활동 지원금"
+    },
+    {
+      "agesKey": "all",
+      "amount": "1인 최대 300~500만 원",
+      "category": "교육·훈련",
+      "code": "P003",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "직업훈련비 일부 또는 전액 지원",
+        "caution": "훈련 출석률 미달 시 본인부담금 증가 가능",
+        "contact": "고용노동부 고객상담센터 1350",
+        "link": "https://www.hrd.go.kr",
+        "method": "HRD-Net 회원가입 후 카드 발급 및 과정 신청",
+        "target": "만 19세 이상 성인 구직자·재직자"
+      },
+      "overview": "구직자와 재직자 모두 직업훈련 과정을 들을 수 있도록 훈련비를 지원합니다.",
+      "source": "고용노동부",
+      "summary": "직업훈련비를 국가가 지원하는 평생교육 카드",
+      "titleSuffix": "국민내일배움카드"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "연 10~20만 원 상당",
+      "category": "생활",
+      "code": "P004",
+      "deadline": "지역별 상이",
+      "detail": {
+        "benefit": "교통카드 또는 모바일 포인트로 교통비 지원",
+        "caution": "신청기간·지원방식이 지자체마다 다르므로 공고 확인 필수",
+        "contact": "거주지 지자체 교통정책 부서",
+        "link": "https://www.gov.kr",
+        "method": "지자체 교통비 지원 사이트 또는 앱을 통해 신청",
+        "target": "대중교통 이용이 많은 청년"
+      },
+      "overview": "정기권·포인트·마일리지 형태로 대중교통 이용비를 지원합니다.",
+      "source": "지자체",
+      "summary": "대중교통 이용이 많은 청년의 교통비 부담을 줄이는 지원제도",
+      "titleSuffix": "청년 교통비 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "검진 항목별 상이",
+      "category": "건강",
+      "code": "P005",
+      "deadline": "검진 기간 내",
+      "detail": {
+        "benefit": "일부 선택검사 비용을 추가로 지원",
+        "caution": "검진 기간 내 미실시 시 이월 불가",
+        "contact": "국민건강보험공단 고객센터 1577-1000",
+        "link": "https://www.nhis.or.kr",
+        "method": "국민건강보험공단 안내문 확인 후 지정 병원 예약",
+        "target": "건강검진 대상 청년"
+      },
+      "overview": "기본 국가건강검진 외에 청년에게 필요한 검사를 확대 지원합니다.",
+      "source": "보건복지부·지자체",
+      "summary": "청년층을 대상으로 선택검사 항목을 추가 지원",
+      "titleSuffix": "청년 건강검진 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "최대 수천만 원 수준(사업별 상이)",
+      "category": "창업",
+      "code": "P006",
+      "deadline": "공고 기간 내",
+      "detail": {
+        "benefit": "사업화 자금, 창업 컨설팅, 입주공간 연계",
+        "caution": "사업계획서 평가, 현장심사 등 경쟁률 높을 수 있음",
+        "contact": "지역 창조경제혁신센터 또는 창업지원기관",
+        "link": "https://www.k-startup.go.kr",
+        "method": "K-Startup 또는 지자체 창업지원센터를 통해 온라인 접수",
+        "target": "초기 단계 청년 창업자"
+      },
+      "overview": "사업화 자금과 함께 컨설팅, 교육, 네트워킹을 종합 지원합니다.",
+      "source": "중소벤처기업부·지자체",
+      "summary": "초기 창업 청년에게 자금·교육·멘토링을 패키지로 지원",
+      "titleSuffix": "청년 창업지원 패키지"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "최대 1~2억 원 수준(조건별 상이)",
+      "category": "주거",
+      "code": "P007",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "저금리 전세보증금 대출",
+        "caution": "소득·신용도·보증기관 심사에 따라 한도 차이 발생",
+        "contact": "각 취급은행 고객센터",
+        "link": "https://www.hf.go.kr",
+        "method": "취급은행 영업점 또는 온라인 비대면 신청",
+        "target": "무주택 청년 세대주"
+      },
+      "overview": "보증부 전세자금 대출을 통해 보증금 마련을 지원합니다.",
+      "source": "국토교통부·주택금융공사",
+      "summary": "청년층에 특화된 저금리 전세자금 대출",
+      "titleSuffix": "청년 전세자금 대출 우대"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "1회 20~30만 원 수준",
+      "category": "주거",
+      "code": "P008",
+      "deadline": "지역별 공고 기간",
+      "detail": {
+        "benefit": "이사비 일부 현금 또는 바우처 지원",
+        "caution": "전입일 기준 신청 가능 기간 제한 존재",
+        "contact": "거주지 지자체 청년정책 부서",
+        "link": "https://www.gov.kr",
+        "method": "전입신고 후 지자체 홈페이지에서 신청",
+        "target": "관내 청년 세대주 또는 청년 1인 가구"
+      },
+      "overview": "집과 직장 이동 또는 주거환경 개선을 위한 이사비용을 지원합니다.",
+      "source": "지자체",
+      "summary": "주거이동이 잦은 청년에게 이사비를 일부 지원",
+      "titleSuffix": "청년 이사비 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "연 10~20만 원",
+      "category": "문화·여가",
+      "code": "P009",
+      "deadline": "공고 기간 내",
+      "detail": {
+        "benefit": "문화시설 이용 가능한 포인트 지급",
+        "caution": "사용기한 내 미사용 시 소멸",
+        "contact": "지역 문화재단 또는 지자체 문화정책 부서",
+        "link": "https://www.culture.go.kr",
+        "method": "온라인 신청 후 카드 또는 모바일 앱으로 사용",
+        "target": "문화 향유 기회가 적은 청년"
+      },
+      "overview": "영화, 공연, 전시, 스포츠 등 문화활동 비용을 바우처로 제공합니다.",
+      "source": "문화체육관광부·지자체",
+      "summary": "청년의 문화생활을 위한 관람·체험비 지원",
+      "titleSuffix": "청년 문화·여가 바우처"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "상담·교육 무료",
+      "category": "금융·교육",
+      "code": "P010",
+      "deadline": "상시 또는 기수별 모집",
+      "detail": {
+        "benefit": "1:1 재무상담 및 그룹교육 무료 제공",
+        "caution": "인원 제한으로 조기 마감 가능",
+        "contact": "금융소비자원 또는 금융교육센터",
+        "link": "https://www.fss.or.kr",
+        "method": "지자체 또는 금융교육센터 홈페이지를 통한 사전 신청",
+        "target": "재무관리 교육이 필요한 청년"
+      },
+      "overview": "빚 관리, 저축, 투자 기초 등 청년 맞춤형 재무 상담을 제공합니다.",
+      "source": "금융위원회·지자체",
+      "summary": "청년 대상 무료 재무진단 및 금융교육 프로그램",
+      "titleSuffix": "청년 금융·재무 컨설팅 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "월 30~70% 임대료 지원",
+      "category": "창업",
+      "code": "P011",
+      "deadline": "공고 기간 내",
+      "detail": {
+        "benefit": "임대료 일부 또는 전액 지원",
+        "caution": "입주기간 종료 후 연장 여부 기관별 상이",
+        "contact": "지역 창업보육센터",
+        "link": "https://www.k-startup.go.kr",
+        "method": "입주기관 또는 지자체 창업지원 사이트에서 공고 확인 후 신청",
+        "target": "창업 3년 이내 청년 대표"
+      },
+      "overview": "공유오피스·창업보육센터 입주 시 임대료를 일부 지원합니다.",
+      "source": "지자체·창조경제혁신센터",
+      "summary": "초기 창업 청년에게 사무·창업 공간 임대료를 지원",
+      "titleSuffix": "청년 창업 공간 임대료 지원"
+    },
+    {
+      "agesKey": "mid",
+      "amount": "교육비 전액 또는 일부 지원",
+      "category": "교육·훈련",
+      "code": "P012",
+      "deadline": "기수별 상이",
+      "detail": {
+        "benefit": "재취업 특화 교육과 취업알선 연계",
+        "caution": "출석률 기준 및 수료 요건 충족 필요",
+        "contact": "중장년일자리희망센터",
+        "link": "https://www.work.go.kr",
+        "method": "중장년일자리희망센터 홈페이지에서 과정 신청",
+        "target": "경력단절 또는 전직 희망 중장년"
+      },
+      "overview": "디지털·서비스·전문직 등 중장년 친화 직무로의 전환을 돕는 과정입니다.",
+      "source": "고용노동부·지자체",
+      "summary": "중장년층을 위한 맞춤형 직무 전환 교육",
+      "titleSuffix": "중장년 재취업 특화 교육"
+    },
+    {
+      "agesKey": "jobplus",
+      "amount": "교육·컨설팅 무료",
+      "category": "일자리",
+      "code": "P013",
+      "deadline": "상시 모집 또는 기수제",
+      "detail": {
+        "benefit": "직업훈련, 이력서 코칭, 면접연습 등 종합 지원",
+        "caution": "프로그램별 참여 횟수 제한 가능",
+        "contact": "지역 새일센터 또는 고용센터",
+        "link": "https://www.moel.go.kr",
+        "method": "여성새로일하기센터 및 고용복지플러스센터 방문 상담",
+        "target": "육아·돌봄·퇴직 등으로 경력단절을 겪은 구직자"
+      },
+      "overview": "경력단절 사유와 전공을 고려한 재취업 코칭과 채용 연계를 제공합니다.",
+      "source": "고용노동부",
+      "summary": "경력단절자를 위한 직업훈련·취업연계 패키지",
+      "titleSuffix": "경력단절 재취업 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "소득세 70~90% 감면",
+      "category": "세제",
+      "code": "P014",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "최대 5년간 소득세 감면",
+        "caution": "기업 규모 및 업종, 근로계약 형태 확인 필요",
+        "contact": "국세청 국세상담센터 126",
+        "link": "https://www.hometax.go.kr",
+        "method": "회사 경유 또는 홈택스를 통해 신청",
+        "target": "중소기업에 취업한 일정 연령 이하 청년"
+      },
+      "overview": "중소기업에 취업한 청년에게 일정 기간 소득세를 감면해주는 제도입니다.",
+      "source": "국세청",
+      "summary": "중소기업 취업 청년의 소득세 일부를 감면",
+      "titleSuffix": "중소기업 취업 청년 소득세 감면"
+    },
+    {
+      "agesKey": "mid",
+      "amount": "최대 7천만 원 수준",
+      "category": "소상공인",
+      "code": "P015",
+      "deadline": "예산 소진 시까지",
+      "detail": {
+        "benefit": "저금리 대출 및 상환 유예",
+        "caution": "신용도·보증한도에 따라 대출가능 금액 상이",
+        "contact": "소상공인시장진흥공단 1357",
+        "link": "https://ols.sbiz.or.kr",
+        "method": "소상공인 정책자금 사이트에서 온라인 예약 후 센터 방문",
+        "target": "매출 감소 등 피해를 입은 소상공인"
+      },
+      "overview": "경영위기에 처한 소상공인의 단기 유동성을 지원하는 정책자금입니다.",
+      "source": "중소벤처기업부·소진공",
+      "summary": "매출 감소 소상공인의 운영자금을 저금리로 지원",
+      "titleSuffix": "소상공인 긴급경영안정자금"
+    },
+    {
+      "agesKey": "mid",
+      "amount": "마케팅 비용 수백만 원 내 지원",
+      "category": "소상공인",
+      "code": "P016",
+      "deadline": "공고 기간 내",
+      "detail": {
+        "benefit": "입점 수수료, 광고비, 콘텐츠 제작 비용 지원",
+        "caution": "업종·매출 기준 충족 여부 확인 필요",
+        "contact": "지역 경제진흥원 또는 소상공인지원센터",
+        "link": "https://www.sbiz.or.kr",
+        "method": "지자체 및 유관기관 공고를 통해 신청",
+        "target": "온라인 판매를 준비하거나 확대하려는 소상공인"
+      },
+      "overview": "제품 촬영, 상세페이지 제작, 광고비 등을 지원해 온라인 판매를 돕습니다.",
+      "source": "중소벤처기업부·지자체",
+      "summary": "온라인 쇼핑몰 입점과 마케팅을 지원하는 사업",
+      "titleSuffix": "소상공인 온라인 판로 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "수수료 일부 환급",
+      "category": "소상공인",
+      "code": "P017",
+      "deadline": "연 1회 정산",
+      "detail": {
+        "benefit": "카드수수료 일부를 환급 또는 세액공제",
+        "caution": "매출 자료 증빙 필수",
+        "contact": "국세청 126 또는 카드사 고객센터",
+        "link": "https://www.hometax.go.kr",
+        "method": "홈택스 또는 지자체 안내에 따라 신청",
+        "target": "연매출 일정 기준 이하 영세·중소 가맹점"
+      },
+      "overview": "신용카드 가맹점 수수료 부담을 낮추기 위한 환급 제도입니다.",
+      "source": "국세청·지자체",
+      "summary": "연매출 기준 이하 소상공인의 카드수수료 일부 환급",
+      "titleSuffix": "소상공인 카드수수료 환급"
+    },
+    {
+      "agesKey": "all",
+      "amount": "사업별 예산 범위 내",
+      "category": "소상공인",
+      "code": "P018",
+      "deadline": "공고 기간 내",
+      "detail": {
+        "benefit": "시장 환경 개선, 홍보·마케팅, 프로그램 운영비 지원",
+        "caution": "상인회 단위 신청이 필요한 경우가 많음",
+        "contact": "지자체 시장경제과 또는 상권활성화팀",
+        "link": "https://www.sbiz.or.kr",
+        "method": "지자체 또는 상인회 주관 사업 공고 확인 후 신청",
+        "target": "전통시장 상인 및 상점가 상인회"
+      },
+      "overview": "환경 개선, 공동마케팅, 온라인 진출 등을 지원하는 종합 사업입니다.",
+      "source": "중소벤처기업부·지자체",
+      "summary": "전통시장 상인의 경영환경 개선과 고객 유입 촉진을 지원",
+      "titleSuffix": "전통시장 및 상점가 활성화 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "사업계획에 따라 수백만~수천만 원",
+      "category": "농업·농촌",
+      "code": "P019",
+      "deadline": "지자체별 상이",
+      "detail": {
+        "benefit": "주택수리비, 임대료, 영농 교육, 창업자금 지원",
+        "caution": "거주기간·영농계획 등 요건 충족 필요",
+        "contact": "귀농귀촌 종합지원센터",
+        "link": "https://www.returnfarm.com",
+        "method": "귀농귀촌 종합센터 및 지자체 농업기술센터 상담 후 신청",
+        "target": "농촌 이주를 계획하거나 시작한 도시민"
+      },
+      "overview": "주거, 교육, 영농기술, 창업 자금 등을 종합적으로 지원합니다.",
+      "source": "농림축산식품부·지자체",
+      "summary": "도시에서 농촌으로 이주하는 사람의 정착을 지원",
+      "titleSuffix": "귀농·귀촌 정착지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "수천만 원대 자금 지원",
+      "category": "농업·창업",
+      "code": "P020",
+      "deadline": "연간 공모",
+      "detail": {
+        "benefit": "창업자금, 컨설팅, 교육 연계",
+        "caution": "자부담 비율 및 의무 영농기간 존재",
+        "contact": "농업기술센터 또는 농정과",
+        "link": "https://www.agrix.go.kr",
+        "method": "농림사업정보시스템 또는 지자체를 통한 신청",
+        "target": "독립 영농을 준비하는 청년 농업인"
+      },
+      "overview": "영농기반 마련과 초기 운영자금을 집중 지원합니다.",
+      "source": "농림축산식품부",
+      "summary": "청년의 스마트농업·친환경농업 창업을 지원",
+      "titleSuffix": "청년 농업창업 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "시설비의 일부 보조",
+      "category": "농업·기술",
+      "code": "P021",
+      "deadline": "연간 공모",
+      "detail": {
+        "benefit": "시설·장비 투자비 일부 보조",
+        "caution": "자부담·융자 병행 등 사업 조건 확인 필요",
+        "contact": "지역 농업기술센터",
+        "link": "https://www.mafra.go.kr",
+        "method": "지자체 공고 확인 후 농업기술센터를 통해 신청",
+        "target": "스마트팜 전환 및 신설을 계획하는 농업인"
+      },
+      "overview": "시설·장비·소프트웨어 도입 비용의 일부를 보조합니다.",
+      "source": "농림축산식품부·지자체",
+      "summary": "스마트팜 시설 도입 비용을 지원하는 사업",
+      "titleSuffix": "스마트팜 보급 확산 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "등록 자체는 무료",
+      "category": "농업·행정",
+      "code": "P022",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "직불금, 각종 지원사업 참여 자격 부여",
+        "caution": "경작 사실 및 경영규모 등 증빙 필요",
+        "contact": "국립농산물품질관리원",
+        "link": "https://www.naqs.go.kr",
+        "method": "국립농산물품질관리원 또는 온라인 시스템을 통해 신청",
+        "target": "실제 영농활동을 하는 농업인·농업법인"
+      },
+      "overview": "경영체 등록을 통해 보조금·지원사업 참여 자격을 확보할 수 있습니다.",
+      "source": "농림축산식품부",
+      "summary": "농업인의 경영체 등록을 돕고 각종 지원정책과 연계",
+      "titleSuffix": "농업 경영체 등록 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "가구당 최대 18만 원 수준",
+      "category": "공공요금",
+      "code": "P023",
+      "deadline": "연 1회 신청기간",
+      "detail": {
+        "benefit": "전기·도시가스·연탄 등 에너지 사용비 지원",
+        "caution": "신청기간 경과 시 지원 불가, 다음 연도로 이월되지 않음",
+        "contact": "에너지바우처 콜센터 1600-3190",
+        "link": "https://www.energyv.or.kr",
+        "method": "주소지 읍·면·동 주민센터에서 신청",
+        "target": "기초생활수급자, 차상위계층 등 에너지 취약계층"
+      },
+      "overview": "겨울철 난방비 부담이 큰 가구에 에너지 바우처를 지급합니다.",
+      "source": "산업통상자원부·지자체",
+      "summary": "에너지 취약계층의 난방비·전기요금을 지원",
+      "titleSuffix": "저소득층 에너지 바우처"
+    },
+    {
+      "agesKey": "all",
+      "amount": "공사비 일부 보조",
+      "category": "주거·에너지",
+      "code": "P024",
+      "deadline": "사업 예산 소진 시까지",
+      "detail": {
+        "benefit": "단열재 보강, 창호 교체, 보일러 교체 비용 지원",
+        "caution": "주택 유형·소득 기준 등에 따른 선정 심사 진행",
+        "contact": "지자체 에너지·환경 부서",
+        "link": "https://www.me.go.kr",
+        "method": "지자체 에너지 효율 사업 공고 확인 후 신청",
+        "target": "노후 주택 거주 가구"
+      },
+      "overview": "노후 주택의 에너지 손실을 줄이기 위한 공사비 일부를 지원합니다.",
+      "source": "환경부·지자체",
+      "summary": "단열·창호 교체 등 에너지 효율 개선 공사 지원",
+      "titleSuffix": "주택 에너지 효율 개선"
+    },
+    {
+      "agesKey": "all",
+      "amount": "차량별 수백만~천만 원 이상",
+      "category": "환경·교통",
+      "code": "P025",
+      "deadline": "예산 소진 시까지",
+      "detail": {
+        "benefit": "차종별·지자체별 차등 보조금 지원",
+        "caution": "보조금 신청 후 일정기간 내 등록 완료해야 함",
+        "contact": "무공해차 통합누리집 고객센터",
+        "link": "https://ev.or.kr",
+        "method": "자동차 판매 대리점을 통해 신청 대행",
+        "target": "전기차를 신규로 구매·등록하는 개인·법인"
+      },
+      "overview": "친환경차 보급 확대를 위해 전기차 구매비를 국고와 지자체가 함께 지원합니다.",
+      "source": "환경부·지자체",
+      "summary": "전기자동차 구매 시 차량 가격 일부를 지원",
+      "titleSuffix": "전기차 구매 보조금"
+    },
+    {
+      "agesKey": "senior",
+      "amount": "월 수십만 원 수준 활동비",
+      "category": "노후·일자리",
+      "code": "P026",
+      "deadline": "연초 또는 수시모집",
+      "detail": {
+        "benefit": "공공시설 지원, 돌봄, 민간형 일자리 제공",
+        "caution": "유형별 참여 가능 횟수·기간 제한 존재",
+        "contact": "노인일자리 상담창구 또는 지자체 노인복지과",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "노인일자리 수행기관 또는 복지관 방문 신청",
+        "target": "일할 의지가 있는 만 65세 이상 어르신"
+      },
+      "overview": "다양한 공익·시니어 일자리를 통해 활동비를 지급합니다.",
+      "source": "보건복지부·지자체",
+      "summary": "어르신의 소득 보전과 사회참여를 지원",
+      "titleSuffix": "노인 일자리 및 사회활동 지원"
+    },
+    {
+      "agesKey": "senior",
+      "amount": "월 최대 30만 원대",
+      "category": "노후",
+      "code": "P027",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "매월 정기적으로 기초연금 지급",
+        "caution": "연 소득과 재산 변동 시 재조사 가능",
+        "contact": "기초연금 콜센터 129, 국민연금공단 1355",
+        "link": "https://www.basicpension.go.kr",
+        "method": "주민센터 또는 국민연금공단 지사에서 신청",
+        "target": "소득·재산 기준을 충족하는 만 65세 이상 어르신"
+      },
+      "overview": "만 65세 이상 어르신의 최저생활 보장을 위한 공적연금입니다.",
+      "source": "보건복지부",
+      "summary": "소득이 적은 어르신에게 매월 연금을 지급",
+      "titleSuffix": "기초연금 지급"
+    },
+    {
+      "agesKey": "senior",
+      "amount": "서비스 제공, 현금지급 아님",
+      "category": "돌봄",
+      "code": "P028",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "안부확인, 외출동행, 가사·생활지원 서비스",
+        "caution": "대상자 선정 기준 및 우선순위 존재",
+        "contact": "주민센터 노인복지 담당",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "읍·면·동 주민센터 또는 노인맞춤돌봄 수행기관 신청",
+        "target": "독거·조손 등 돌봄이 필요한 어르신"
+      },
+      "overview": "방문형 돌봄, 안부확인, 병원동행 등 서비스를 지원합니다.",
+      "source": "보건복지부·지자체",
+      "summary": "일상생활이 어려운 어르신에게 돌봄서비스 제공",
+      "titleSuffix": "노인 맞춤 돌봄서비스"
+    },
+    {
+      "agesKey": "senior",
+      "amount": "공사비 일부 또는 전액 지원",
+      "category": "주거·복지",
+      "code": "P029",
+      "deadline": "지자체별 상이",
+      "detail": {
+        "benefit": "주거 안전시설 설치 및 개보수",
+        "caution": "주택 소유 형태 및 소득 기준 확인 필요",
+        "contact": "지자체 주거복지 또는 노인복지 부서",
+        "link": "https://www.gov.kr",
+        "method": "주민센터 또는 주거복지센터 상담 후 신청",
+        "target": "낙상 위험이 높거나 거동이 불편한 고령자 가구"
+      },
+      "overview": "미끄럼 방지, 손잡이 설치, 문턱 제거 등의 비용을 지원합니다.",
+      "source": "지자체",
+      "summary": "어르신이 안전하게 생활할 수 있도록 집 내부를 개선",
+      "titleSuffix": "고령자 주거환경 개선"
+    },
+    {
+      "agesKey": "senior",
+      "amount": "교육 무료",
+      "category": "교육",
+      "code": "P030",
+      "deadline": "상시 또는 기수별",
+      "detail": {
+        "benefit": "1:1 또는 소규모 그룹 교육 무료 제공",
+        "caution": "정원 제한으로 사전 예약 필요",
+        "contact": "디지털배움터 상담전화",
+        "link": "https://www.디지털배움터.kr",
+        "method": "주민센터, 도서관, 복지관 등에서 교육 신청",
+        "target": "디지털 기기 사용이 어려운 고령층"
+      },
+      "overview": "디지털 격차 해소를 위해 일상생활에 필요한 기초 교육을 제공합니다.",
+      "source": "과학기술정보통신부·지자체",
+      "summary": "스마트폰·키오스크 사용법 등을 교육",
+      "titleSuffix": "고령층 디지털 교육지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "급여 시간에 따라 상이",
+      "category": "장애인·돌봄",
+      "code": "P031",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "활동지원 서비스 제공",
+        "caution": "등급판정 및 서비스 시간 조정 가능",
+        "contact": "장애인콜센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "읍·면·동 주민센터 또는 국민연금공단 지사 신청",
+        "target": "만 6세 이상~만 65세 미만 장애인 등 기준 충족자"
+      },
+      "overview": "활동지원사를 통해 신변·가사·이동 등을 지원합니다.",
+      "source": "보건복지부",
+      "summary": "일상생활이 어려운 장애인에게 활동지원 서비스를 제공",
+      "titleSuffix": "장애인 활동지원급여"
+    },
+    {
+      "agesKey": "all",
+      "amount": "품목별 한도 내 지원",
+      "category": "장애인·보조기기",
+      "code": "P032",
+      "deadline": "연 1회 또는 수시",
+      "detail": {
+        "benefit": "보조기기 구입비 일부 지원",
+        "caution": "사전 구입 시 소급 지원 불가한 경우 많음",
+        "contact": "지역 보조기기센터",
+        "link": "https://www.nrd.go.kr",
+        "method": "보조기기센터 또는 주민센터에 신청서 제출",
+        "target": "등록 장애인 중 소득·장애 유형 기준 충족자"
+      },
+      "overview": "휠체어, 보청기, 점자정보단말기 등 보조기기를 지원합니다.",
+      "source": "보건복지부·지자체",
+      "summary": "장애 유형별 필수 보조기기 구입 비용을 지원",
+      "titleSuffix": "장애인 보조기기 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "월 또는 연 단위 지원",
+      "category": "장애인·교통",
+      "code": "P033",
+      "deadline": "지자체별 상이",
+      "detail": {
+        "benefit": "장애인 콜택시, 교통비 바우처 등 지원",
+        "caution": "이용 가능 횟수·시간 제한 존재",
+        "contact": "지자체 장애인 콜택시 콜센터",
+        "link": "https://www.gov.kr",
+        "method": "지자체 장애인복지과 또는 교통복지센터 신청",
+        "target": "등록 장애인 중 이동 지원이 필요한 자"
+      },
+      "overview": "콜택시, 바우처 택시, 교통카드 지원 등 다양한 형태로 제공됩니다.",
+      "source": "지자체",
+      "summary": "장애인의 이동권 보장을 위한 교통비 지원",
+      "titleSuffix": "장애인 교통비 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "근로자 1인당 월 수십만 원 이상",
+      "category": "장애인·일자리",
+      "code": "P034",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "장애인 근로자 인건비 일부 지원",
+        "caution": "고용유지 의무 기간 등 조건 존재",
+        "contact": "근로복지공단 고객센터 1588-0075",
+        "link": "https://www.kcomwel.or.kr",
+        "method": "고용보험 EDI 또는 근로복지공단 지사 신청",
+        "target": "장애인을 일정 인원 이상 고용한 사업주"
+      },
+      "overview": "장애인 고용을 촉진하기 위해 인건비 일부를 지원합니다.",
+      "source": "고용노동부·근로복지공단",
+      "summary": "장애인을 고용한 사업주에게 장려금을 지급",
+      "titleSuffix": "장애인 고용장려금"
+    },
+    {
+      "agesKey": "all",
+      "amount": "월 서비스 시간에 따라 상이",
+      "category": "장애인·돌봄",
+      "code": "P035",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "주간 활동 프로그램 및 돌봄 지원",
+        "caution": "대상자 선정 및 본인부담금 발생 가능",
+        "contact": "발달장애인지원센터",
+        "link": "https://www.broso.or.kr",
+        "method": "주민센터 또는 발달장애인지원센터를 통해 신청",
+        "target": "성인 발달장애인"
+      },
+      "overview": "주간에 돌봄과 교육, 사회활동을 제공하는 서비스입니다.",
+      "source": "보건복지부·지자체",
+      "summary": "발달장애인의 낮 시간 활동 프로그램 지원",
+      "titleSuffix": "발달장애인 주간활동서비스"
+    },
+    {
+      "agesKey": "all",
+      "amount": "생계·의료·주거비 등 항목별 상이",
+      "category": "복지·생계",
+      "code": "P036",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "생계비, 의료비, 주거비, 교육비 등 지원",
+        "caution": "위기사유 및 소득·재산 기준 심사 필요",
+        "contact": "보건복지상담센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 또는 보건복지상담센터 129 상담 후 신청",
+        "target": "기초생활수급·차상위 또는 위기 상황에 놓인 가구"
+      },
+      "overview": "실직, 질병, 가출 등으로 생계가 곤란한 경우 현금·현물 등을 제공합니다.",
+      "source": "보건복지부·지자체",
+      "summary": "갑작스러운 위기 상황에 놓인 가구를 단기간 지원",
+      "titleSuffix": "저소득층 긴급복지 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "가구원 수·소득에 따라 차등",
+      "category": "복지·생계",
+      "code": "P037",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "월별 생계비 지급",
+        "caution": "소득·재산 변동 시 급여액 변동 가능",
+        "contact": "보건복지상담센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 방문 신청 및 소득·재산 조사",
+        "target": "소득인정액이 기준 중위소득 일정 비율 이하인 가구"
+      },
+      "overview": "소득인정액이 기준 이하인 가구에 매월 생계급여를 지급합니다.",
+      "source": "보건복지부",
+      "summary": "최저생활이 어려운 가구의 기본 생계비를 지원",
+      "titleSuffix": "기초생활보장 생계급여"
+    },
+    {
+      "agesKey": "all",
+      "amount": "의료급여 1·2종별 상이",
+      "category": "건강·복지",
+      "code": "P038",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "진료비 본인부담 경감 및 일부 무료",
+        "caution": "지정의료기관 이용 권장",
+        "contact": "보건복지상담센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 신청 후 자격 판정",
+        "target": "기초생활수급자 및 차상위계층 등"
+      },
+      "overview": "입원·외래 진료비 본인부담률을 낮춰줍니다.",
+      "source": "보건복지부",
+      "summary": "저소득층의 의료비 부담을 줄이는 공공의료보장 제도",
+      "titleSuffix": "의료급여 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "가구·지역·임대료 수준에 따라 상이",
+      "category": "주거·복지",
+      "code": "P039",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "임차료 지원 또는 주택 수선유지비 지원",
+        "caution": "주소지와 실제 거주지 일치 여부 확인",
+        "contact": "보건복지상담센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 주거급여 담당 창구에서 신청",
+        "target": "소득인정액이 기준 이하인 가구"
+      },
+      "overview": "소득과 주거형태에 따라 임대료 또는 주택개보수비를 지급합니다.",
+      "source": "국토교통부·보건복지부",
+      "summary": "임차가구와 자가가구의 주거비를 지원",
+      "titleSuffix": "주거급여 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "급별·항목별 상이",
+      "category": "교육·복지",
+      "code": "P040",
+      "deadline": "학기별 또는 연 1회",
+      "detail": {
+        "benefit": "급식비, 학용품비, 방과후학교비 지원",
+        "caution": "학교별 추가 서류 요청 가능",
+        "contact": "교육청 콜센터 또는 학교 행정실",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 또는 학교 행정실을 통해 신청",
+        "target": "기초생활수급자 및 차상위계층 학생"
+      },
+      "overview": "교과서비·수업료·학용품비 등을 현금 또는 바우처로 제공합니다.",
+      "source": "교육부·보건복지부",
+      "summary": "저소득층 학생의 학습에 필요한 비용을 지원",
+      "titleSuffix": "교육급여 및 교육비 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "학기당 수십만~수백만 원",
+      "category": "교육",
+      "code": "P041",
+      "deadline": "학기별 신청기간",
+      "detail": {
+        "benefit": "등록금 일부 또는 전액 지원",
+        "caution": "성적·이수학점 기준 충족 필요",
+        "contact": "한국장학재단 1599-2000",
+        "link": "https://www.kosaf.go.kr",
+        "method": "한국장학재단 홈페이지에서 온라인 신청",
+        "target": "국내 대학 재학생 중 소득기준 충족자"
+      },
+      "overview": "소득분위에 따라 등록금 일부 또는 전액을 지원합니다.",
+      "source": "교육부·한국장학재단",
+      "summary": "등록금 부담을 줄이기 위한 소득연계 장학금",
+      "titleSuffix": "대학생 국가장학금"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "이자 전액 또는 일부",
+      "category": "교육·금융",
+      "code": "P042",
+      "deadline": "지자체별 상이",
+      "detail": {
+        "benefit": "학자금 대출 이자 상환 지원",
+        "caution": "중복 지원 여부 및 대출기관 확인 필요",
+        "contact": "지자체 교육지원 부서",
+        "link": "https://www.kosaf.go.kr",
+        "method": "지자체 홈페이지 또는 한국장학재단을 통해 신청",
+        "target": "지역 거주 대학생 및 청년"
+      },
+      "overview": "졸업 후 일정 기간 동안 학자금 대출 이자를 전부 또는 일부 지원합니다.",
+      "source": "지자체·교육부",
+      "summary": "지자체 또는 정부가 학자금 대출 이자를 대신 부담",
+      "titleSuffix": "학자금 대출 이자지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "교육비 전액 지원, 일부 훈련장려금",
+      "category": "교육·훈련",
+      "code": "P043",
+      "deadline": "기수별 모집",
+      "detail": {
+        "benefit": "교육비 전액 지원 및 프로젝트 기반 실습",
+        "caution": "수강태도 및 프로젝트 참여도 중요",
+        "contact": "고용노동부 1350",
+        "link": "https://www.k-digitalcredit.kr",
+        "method": "K-디지털 플랫폼 및 HRD-Net에서 과정별 신청",
+        "target": "디지털 직무로 취업을 희망하는 청년"
+      },
+      "overview": "청년에게 실무 중심의 디지털 역량을 키워주는 장기 교육과정입니다.",
+      "source": "고용노동부",
+      "summary": "디지털·IT 분야 집중 직업훈련 프로그램",
+      "titleSuffix": "K-디지털 트레이닝"
+    },
+    {
+      "agesKey": "jobplus",
+      "amount": "교육비 일부 또는 전액 지원",
+      "category": "교육·훈련",
+      "code": "P044",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "직무 관련 교육비 지원",
+        "caution": "회사 승인 및 휴가 사용 필요할 수 있음",
+        "contact": "고용노동부 고객센터 1350",
+        "link": "https://www.hrd.go.kr",
+        "method": "HRD-Net 재직자 훈련과정 검색 후 신청",
+        "target": "4대 보험 가입 재직자"
+      },
+      "overview": "야간·주말 중심의 단기 과정으로 직무능력을 높여줍니다.",
+      "source": "고용노동부",
+      "summary": "현재 직장인의 역량 강화를 위한 교육 지원",
+      "titleSuffix": "재직자 직무능력 향상훈련"
+    },
+    {
+      "agesKey": "all",
+      "amount": "연 1인당 일정 금액",
+      "category": "문화·여가",
+      "code": "P045",
+      "deadline": "연간 신청기간",
+      "detail": {
+        "benefit": "영화·공연·도서·여행·체육 등에 사용 가능",
+        "caution": "해당 연도 내 미사용 금액 소멸",
+        "contact": "문화누리카드 콜센터",
+        "link": "https://www.mnuri.kr",
+        "method": "주민센터 또는 온라인 문화누리카드 홈페이지 신청",
+        "target": "기초생활수급자 및 차상위계층"
+      },
+      "overview": "취약계층의 문화 향유 기회를 확대하기 위한 카드형 바우처입니다.",
+      "source": "문화체육관광부",
+      "summary": "문화예술·여행·체육 활동을 지원하는 바우처",
+      "titleSuffix": "문화누리카드"
+    },
+    {
+      "agesKey": "all",
+      "amount": "월 수만 원 수준, 연 단위 지원",
+      "category": "체육·여가",
+      "code": "P046",
+      "deadline": "연간 모집",
+      "detail": {
+        "benefit": "체육시설 강좌 수강료 지원",
+        "caution": "월별 출석률 기준 있음",
+        "contact": "스포츠강좌이용권 콜센터",
+        "link": "https://svoucher.kspo.or.kr",
+        "method": "스포츠강좌이용권 홈페이지 또는 주민센터 신청",
+        "target": "기초생활수급·차상위 가구 만 5~18세"
+      },
+      "overview": "헬스, 수영, 태권도 등 체육 강좌 수강료를 바우처로 지원합니다.",
+      "source": "문화체육관광부·국민체육진흥공단",
+      "summary": "저소득 가구 유·청소년의 스포츠 활동을 지원",
+      "titleSuffix": "스포츠강좌이용권"
+    },
+    {
+      "agesKey": "all",
+      "amount": "1인 또는 1가구당 수십만 원",
+      "category": "문화·관광",
+      "code": "P047",
+      "deadline": "사업별 상이",
+      "detail": {
+        "benefit": "여행상품 및 교통·숙박비 일부 지원",
+        "caution": "지정 여행사 또는 플랫폼을 통해서만 사용 가능",
+        "contact": "관광안내센터 또는 지자체 관광과",
+        "link": "https://kto.visitkorea.or.kr",
+        "method": "지자체 또는 관광공사 공고를 통해 신청",
+        "target": "저소득층, 장애인, 고령층 등"
+      },
+      "overview": "연간 1회 국내 여행 상품 또는 자유여행에 사용할 수 있는 바우처를 제공합니다.",
+      "source": "문화체육관광부·지자체",
+      "summary": "취약계층의 국내 여행비용 일부를 지원",
+      "titleSuffix": "관광·여행 바우처"
+    },
+    {
+      "agesKey": "all",
+      "amount": "구매액의 10% 내외 할인",
+      "category": "소상공인·전통시장",
+      "code": "P048",
+      "deadline": "예산 소진 시까지",
+      "detail": {
+        "benefit": "전통시장 및 상점가에서 사용 가능한 상품권 할인 구매",
+        "caution": "월별·연간 구매한도 존재",
+        "contact": "온누리상품권 고객센터",
+        "link": "https://kgmp.onnuri.go.kr",
+        "method": "은행·모바일 앱 등을 통해 온누리상품권 구매",
+        "target": "개인 소비자"
+      },
+      "overview": "개인은 일정 한도 내에서 온누리상품권을 할인된 가격에 구매할 수 있습니다.",
+      "source": "중소벤처기업부",
+      "summary": "전통시장 활성화를 위한 상품권 할인 판매",
+      "titleSuffix": "전통시장 온누리상품권 할인구매"
+    },
+    {
+      "agesKey": "all",
+      "amount": "프로그램별 수강료 감면 또는 무료",
+      "category": "체육·건강",
+      "code": "P049",
+      "deadline": "기수별 모집",
+      "detail": {
+        "benefit": "생활체육 프로그램 무료 또는 저렴하게 이용",
+        "caution": "선착순 마감이 많아 조기 신청 필요",
+        "contact": "지역 체육회",
+        "link": "https://www.sportal.or.kr",
+        "method": "시·군·구 체육회 및 주민센터 공고 확인 후 신청",
+        "target": "지역 주민 누구나"
+      },
+      "overview": "생활체육교실, 걷기·요가·탁구 등 다양한 프로그램을 운영합니다.",
+      "source": "지자체·체육회",
+      "summary": "지역 주민의 생활체육 참여를 위해 프로그램 수강료 지원",
+      "titleSuffix": "생활체육 참여지원"
+    },
+    {
+      "agesKey": "jobplus",
+      "amount": "교육비 무료 또는 일부 지원",
+      "category": "여성·교육",
+      "code": "P050",
+      "deadline": "기수별 모집",
+      "detail": {
+        "benefit": "전문 교육, 커리어 코칭, 취업연계 지원",
+        "caution": "사전 상담 및 적성검사 진행 가능",
+        "contact": "지역 새일센터",
+        "link": "https://www.mogef.go.kr",
+        "method": "여성새로일하기센터 또는 여성인력개발센터 신청",
+        "target": "재취업·이직을 준비하는 여성"
+      },
+      "overview": "IT·디자인·마케팅 등 재취업 유망 분야 중심으로 교육을 제공합니다.",
+      "source": "여성가족부·지자체",
+      "summary": "여성의 커리어 전환과 역량 강화를 돕는 프로그램",
+      "titleSuffix": "여성 경력개발·업스킬링 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "서비스 무료 또는 일부 지원",
+      "category": "안전·복지",
+      "code": "P051",
+      "deadline": "지자체별 상시",
+      "detail": {
+        "benefit": "귀가 동행, 안심택시, 안전 귀갓길 조성",
+        "caution": "운영시간 및 이용 가능 지역 제한 존재",
+        "contact": "지자체 여성·안전 담당 부서",
+        "link": "https://www.gov.kr",
+        "method": "지자체 앱 또는 콜센터를 통해 이용 신청",
+        "target": "야간 혼자 귀가하는 여성을 포함한 주민"
+      },
+      "overview": "귀가 동행 서비스, 안심택시, 위치 공유 등 다양한 지원을 제공합니다.",
+      "source": "지자체",
+      "summary": "야간 시간대 혼자 귀가하는 여성을 위한 안전 서비스",
+      "titleSuffix": "여성 안심귀가 지원"
+    },
+    {
+      "agesKey": "jobplus",
+      "amount": "수백만 원 수준 바우처",
+      "category": "여성·창업",
+      "code": "P052",
+      "deadline": "공모 기간 내",
+      "detail": {
+        "benefit": "컨설팅, 시제품, 마케팅 비용 지원",
+        "caution": "업력·매출·아이템 혁신성 등 평가",
+        "contact": "여성기업종합지원센터",
+        "link": "https://www.wbiz.or.kr",
+        "method": "여성기업종합지원센터 등 전용 플랫폼을 통해 신청",
+        "target": "예비 또는 초기 여성 창업자"
+      },
+      "overview": "사업모델 검증, 마케팅, 브랜딩 등에 필요한 비용을 바우처로 제공합니다.",
+      "source": "중소벤처기업부·여성가족부",
+      "summary": "여성 창업자의 초기 비용과 컨설팅을 지원",
+      "titleSuffix": "여성 창업 지원 바우처"
+    },
+    {
+      "agesKey": "all",
+      "amount": "자녀 1인당 월 수십만 원",
+      "category": "가족·복지",
+      "code": "P053",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "자녀양육비, 학습비 등 지원",
+        "caution": "소득·재산 조사 및 정기적인 재확인",
+        "contact": "보건복지상담센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 한부모가족 담당 창구 신청",
+        "target": "소득·재산 기준을 충족하는 한부모가족"
+      },
+      "overview": "만 18세 미만 자녀를 양육하는 한부모에게 양육비를 지급합니다.",
+      "source": "보건복지부",
+      "summary": "한부모가족 자녀양육비를 지원하는 제도",
+      "titleSuffix": "한부모가족 양육비 지원"
+    },
+    {
+      "agesKey": "jobplus",
+      "amount": "단축시간에 따른 급여 지원",
+      "category": "일자리·가족",
+      "code": "P054",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "육아기 근로시간 단축 급여 지급",
+        "caution": "사업장과의 사전 협의 필요",
+        "contact": "고용센터 또는 고객상담센터 1350",
+        "link": "https://www.ei.go.kr",
+        "method": "고용보험 홈페이지 또는 고용센터에 신청",
+        "target": "만 8세 이하 자녀를 둔 근로자"
+      },
+      "overview": "육아기 근로시간 단축 급여를 통해 일·가정 양립을 돕습니다.",
+      "source": "고용노동부",
+      "summary": "육아 중 근로자의 근로시간 단축 시 소득 보전을 지원",
+      "titleSuffix": "출산·육아기 근로시간 단축 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "일시금 수십만~수백만 원",
+      "category": "가족·출산",
+      "code": "P055",
+      "deadline": "출생 후 일정기간 내",
+      "detail": {
+        "benefit": "출산축하금, 바우처 등 출생아 1인당 지원",
+        "caution": "출생 신고와 연계되어 자동 또는 별도 신청",
+        "contact": "주민센터 또는 보건소",
+        "link": "https://www.gov.kr",
+        "method": "행복출산 원스톱서비스 또는 주민센터 신청",
+        "target": "신생아가 있는 가정"
+      },
+      "overview": "출산 시 일시금과 바우처를 제공해 초기 양육비 부담을 줄입니다.",
+      "source": "보건복지부·지자체",
+      "summary": "신생아 출생 가정에 초기 양육비를 지원",
+      "titleSuffix": "출산 축하금·첫만남이용권"
+    },
+    {
+      "agesKey": "all",
+      "amount": "소득에 따라 본인부담 차등",
+      "category": "가족·건강",
+      "code": "P056",
+      "deadline": "출산 전후 일정기간",
+      "detail": {
+        "benefit": "산모·신생아 돌봄, 가사 일부 지원",
+        "caution": "임신·출산 시기에 맞춰 조기 신청 필요",
+        "contact": "관할 보건소",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "임신·출산 진단서 지참 후 보건소 또는 복지로 신청",
+        "target": "출산 가정 중 일정 기준 충족 가구"
+      },
+      "overview": "출산 가정에 일정 기간 동안 건강관리사를 파견해 산후 회복을 돕습니다.",
+      "source": "보건복지부·지자체",
+      "summary": "전문 인력이 산모와 신생아를 방문하여 돌봐주는 서비스",
+      "titleSuffix": "산모·신생아 건강관리 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "대출한도 수억 원, 금리 우대",
+      "category": "주거·금융",
+      "code": "P057",
+      "deadline": "상품별 상이",
+      "detail": {
+        "benefit": "고정금리 장기 모기지 또는 전세자금 대출",
+        "caution": "소득·주택가액·무주택 여부 등 조건 확인",
+        "contact": "주택금융공사 고객센터 1688-8114",
+        "link": "https://www.hf.go.kr",
+        "method": "주택금융공사 또는 취급은행을 통해 신청",
+        "target": "무주택 세대주 등 실수요자"
+      },
+      "overview": "특례보금자리론 등 정책모기지를 통해 주택 구입·전세자금을 지원합니다.",
+      "source": "국토교통부·주택금융공사",
+      "summary": "무주택 서민·실수요자의 주거자금 대출 금리 우대",
+      "titleSuffix": "주택구입·전세보증금 대출 금리우대"
+    },
+    {
+      "agesKey": "all",
+      "amount": "보증금 일부 대출·융자 등",
+      "category": "주거·법률",
+      "code": "P058",
+      "deadline": "피해 발생 시 수시",
+      "detail": {
+        "benefit": "긴급 주거지원, 저리 대출, 법률상담·소송 지원",
+        "caution": "피해사실 입증을 위한 서류 준비 필요",
+        "contact": "전세피해 지원센터",
+        "link": "https://www.molit.go.kr",
+        "method": "전세사기 피해 지원센터 상담 후 신청",
+        "target": "전세사기 피해자로 인정된 세입자"
+      },
+      "overview": "전세사기 피해 확정 시 대출, 임시거처, 법률지원 등을 제공합니다.",
+      "source": "국토교통부·법무부",
+      "summary": "전세사기 피해자의 긴급 주거·금융 지원",
+      "titleSuffix": "전세사기 피해지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "최대 수천만 원",
+      "category": "주거·금융",
+      "code": "P059",
+      "deadline": "상품별 상시",
+      "detail": {
+        "benefit": "보증금 전액 또는 일부 대출, 일부 상품은 무이자",
+        "caution": "임대차계약서, 확정일자 등 서류 필요",
+        "contact": "취급은행 또는 주택도시보증공사",
+        "link": "https://www.khug.or.kr",
+        "method": "취급은행 또는 보증기관 홈페이지를 통해 신청",
+        "target": "소득·자산 기준을 충족하는 청년 무주택 세대주"
+      },
+      "overview": "보증보험을 활용한 무담보·저금리 보증금 대출 상품입니다.",
+      "source": "국토교통부·지자체",
+      "summary": "청년의 전·월세 보증금을 낮은 이자로 지원",
+      "titleSuffix": "청년 전월세 보증금 무이자 또는 저이자 대출"
+    },
+    {
+      "agesKey": "all",
+      "amount": "의료비 일부 또는 상당액 지원",
+      "category": "복지·건강",
+      "code": "P060",
+      "deadline": "상시",
+      "detail": {
+        "benefit": "의료비 및 일정 기간 생계비 지원",
+        "caution": "소득·재산 및 위기사유 심사 필요",
+        "contact": "보건복지상담센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 또는 보건소 상담 후 신청",
+        "target": "중대한 질병·사고로 인해 생계유지가 어려운 가구"
+      },
+      "overview": "의료비가 급격히 증가해 생계유지가 곤란한 가구를 지원합니다.",
+      "source": "보건복지부·지자체",
+      "summary": "갑작스러운 질병·사고로 인한 생계·의료비 부담을 완화",
+      "titleSuffix": "긴급 생계·의료비 지원"
+    },
+    {
+      "agesKey": "mid",
+      "amount": "상담 무료",
+      "category": "노후·금융",
+      "code": "P061",
+      "deadline": "상시 또는 예약제",
+      "detail": {
+        "benefit": "전문가 1:1 상담 및 노후 재무설계",
+        "caution": "투자 권유가 아닌 상담 중심 서비스",
+        "contact": "금융교육·상담센터",
+        "link": "https://www.fss.or.kr",
+        "method": "공공 재무상담센터 또는 온라인 예약",
+        "target": "노후자산 점검이 필요한 중장년·고령층"
+      },
+      "overview": "공적연금, 퇴직연금, 개인연금 등 노후 자산 점검과 계획 수립을 돕습니다.",
+      "source": "금융감독원·지자체",
+      "summary": "중장년·고령층 대상 재무·연금 상담 서비스",
+      "titleSuffix": "노후 준비 자산관리 상담"
+    },
+    {
+      "agesKey": "mid",
+      "amount": "교육·컨설팅 무료, 일부 자금 지원",
+      "category": "창업·중장년",
+      "code": "P062",
+      "deadline": "공모 기간 내",
+      "detail": {
+        "benefit": "창업 교육, 멘토링, 사업화 자금 연계",
+        "caution": "경쟁률이 높으므로 사업계획서 준비 필수",
+        "contact": "중소기업 통합콜센터 1357",
+        "link": "https://www.k-startup.go.kr",
+        "method": "중장년 기술창업센터 또는 K-Startup을 통해 신청",
+        "target": "퇴직(예정) 중장년 예비창업자"
+      },
+      "overview": "퇴직 전후 중장년층에게 재도전 창업 교육과 자금을 제공합니다.",
+      "source": "중소벤처기업부",
+      "summary": "중장년층의 경험을 살린 창업을 지원",
+      "titleSuffix": "중장년 창업 재도전 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "저축액의 일정 비율 매칭",
+      "category": "복지·금융",
+      "code": "P063",
+      "deadline": "사업별 공고 기간",
+      "detail": {
+        "benefit": "목표기간 저축 후 자립자금으로 일시 지급",
+        "caution": "중도 해지 시 매칭금 회수 가능",
+        "contact": "보건복지상담센터 129",
+        "link": "https://www.bokjiro.go.kr",
+        "method": "주민센터 또는 자활센터 신청",
+        "target": "근로·사업소득이 있는 저소득 가구"
+      },
+      "overview": "본인이 저축하면 정부가 추가로 매칭 적립을 해주는 통장입니다.",
+      "source": "보건복지부",
+      "summary": "근로빈곤층의 자산 형성을 돕는 매칭 적립제도",
+      "titleSuffix": "소득·자산 형성 지원(희망·내일키움통장 등)"
+    },
+    {
+      "agesKey": "all",
+      "amount": "기기 대여 또는 구입비 일부 지원",
+      "category": "디지털·복지",
+      "code": "P064",
+      "deadline": "사업별 상이",
+      "detail": {
+        "benefit": "스마트기기 지원과 기초 교육 제공",
+        "caution": "대여 방식일 경우 반납 의무 존재",
+        "contact": "지자체 디지털 포용 전담부서",
+        "link": "https://www.gov.kr",
+        "method": "지자체 디지털 포용 사업 공고 확인 후 신청",
+        "target": "디지털 활용이 어려운 취약계층"
+      },
+      "overview": "스마트폰·태블릿·노트북 등 기기 지원과 교육을 함께 제공합니다.",
+      "source": "과학기술정보통신부·지자체",
+      "summary": "저소득·고령층에 스마트기기 구입·대여를 지원",
+      "titleSuffix": "디지털 취약계층 기기 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "상담·치료비 일부 또는 전액 지원",
+      "category": "건강·정신",
+      "code": "P065",
+      "deadline": "사업별 상이",
+      "detail": {
+        "benefit": "심리상담, 검사, 치료비 지원",
+        "caution": "프로그램별 대상 연령·횟수 제한 존재",
+        "contact": "지역 정신건강복지센터",
+        "link": "https://www.mentalhealth.go.kr",
+        "method": "정신건강복지센터 또는 지자체 홈페이지에서 신청",
+        "target": "정신건강 문제로 도움이 필요한 주민"
+      },
+      "overview": "마음건강 바우처, 청년 심리상담 등 프로그램으로 치료비를 지원합니다.",
+      "source": "보건복지부·지자체",
+      "summary": "우울·불안 등 정신건강 문제에 대한 상담·치료를 지원",
+      "titleSuffix": "정신건강 상담·치료비 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "프로젝트당 수백만 원 내 지원",
+      "category": "청년·지역",
+      "code": "P066",
+      "deadline": "공모 기간 내",
+      "detail": {
+        "benefit": "프로젝트 활동비, 공간, 컨설팅 지원",
+        "caution": "정산 및 결과보고 의무",
+        "contact": "청년정책 전담부서",
+        "link": "https://www.gov.kr",
+        "method": "지자체 청년정책 전용 사이트에서 공모 신청",
+        "target": "마을·지역 활동에 관심 있는 청년 모임"
+      },
+      "overview": "청년들이 팀을 이루어 지역 문제 해결·문화 기획 등을 수행하도록 예산을 지원합니다.",
+      "source": "지자체",
+      "summary": "청년의 지역 기반 프로젝트 활동을 지원",
+      "titleSuffix": "청년 마을·공동체 활동 지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "이자율 일부 또는 전액 지원",
+      "category": "주거·가족",
+      "code": "P067",
+      "deadline": "지자체별 상이",
+      "detail": {
+        "benefit": "전세자금 대출 이자 지원",
+        "caution": "중도상환·이사 시 지원기간 단축 가능",
+        "contact": "지자체 주거복지과",
+        "link": "https://www.gov.kr",
+        "method": "지자체 주거지원 사업 공고를 통해 신청",
+        "target": "청년 및 혼인 기간 일정 기준 내 신혼부부"
+      },
+      "overview": "지자체에서 전세자금 대출 이자율을 낮춰줍니다.",
+      "source": "지자체",
+      "summary": "청년 및 신혼부부의 전세자금 대출 이자를 일부 지원",
+      "titleSuffix": "청년·신혼부부 전세자금 이자지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "융자·보조 혼합 지원",
+      "category": "농촌·주거",
+      "code": "P068",
+      "deadline": "연간 공모",
+      "detail": {
+        "benefit": "주택 개량을 위한 장기 저리 융자 및 일부 보조금",
+        "caution": "허가 절차 및 시공 기준 준수 필요",
+        "contact": "지자체 건축·주택 관련 부서",
+        "link": "https://www.molit.go.kr",
+        "method": "지자체 건축·주택 부서를 통해 신청",
+        "target": "농어촌 지역의 노후 주택 소유자"
+      },
+      "overview": "지붕·외벽·화장실·부엌 등 주거환경 개선을 돕습니다.",
+      "source": "국토교통부·지자체",
+      "summary": "농어촌 지역 노후 주택을 개량·보수하는 비용 지원",
+      "titleSuffix": "농어촌 주택 개량·수리 지원"
+    },
+    {
+      "agesKey": "all",
+      "amount": "월 수만 원 수준 추가 지원",
+      "category": "주거·복지",
+      "code": "P069",
+      "deadline": "지자체별 상시 또는 공고형",
+      "detail": {
+        "benefit": "월세 일부 추가 지원",
+        "caution": "타 주거지원 사업과의 중복 여부 확인",
+        "contact": "지자체 주거복지과",
+        "link": "https://www.gov.kr",
+        "method": "주민센터 주거복지 창구 신청",
+        "target": "주거급여 수급 또는 이에 준하는 저소득 임차가구"
+      },
+      "overview": "기존 주거급여 외에 지방비로 월세를 더 지원하는 제도입니다.",
+      "source": "지자체",
+      "summary": "월세 부담이 큰 저소득 가구의 임대료를 추가 지원",
+      "titleSuffix": "저소득층 월세 특별지원"
+    },
+    {
+      "agesKey": "youth",
+      "amount": "시세 대비 60~80% 수준 임대료",
+      "category": "주거·공공임대",
+      "code": "P070",
+      "deadline": "공급 공고 기간",
+      "detail": {
+        "benefit": "저렴한 임대료와 장기간 거주 안정성",
+        "caution": "소득·자산·무주택 등 입주 자격 확인 필수",
+        "contact": "LH 콜센터 1600-1004",
+        "link": "https://apply.lh.or.kr",
+        "method": "LH·SH·지자체 공고 확인 후 청약센터 신청",
+        "target": "청년, 신혼부부, 사회초년생 등"
+      },
+      "overview": "역세권·대학가 인근 등에 공급되는 행복주택의 입주 기회를 지원합니다.",
+      "source": "국토교통부·LH·SH 등",
+      "summary": "시세보다 저렴한 공공임대주택 입주 기회 제공",
+      "titleSuffix": "청년·신혼부부 행복주택 입주 지원"
+    }
+  ],
+  "regions": [
+    "서울특별시",
+    "부산광역시",
+    "대구광역시",
+    "인천광역시",
+    "광주광역시",
+    "대전광역시",
+    "울산광역시",
+    "세종특별자치시",
+    "경기도",
+    "강원특별자치도",
+    "충청북도",
+    "충청남도",
+    "전라북도",
+    "전라남도",
+    "경상북도",
+    "경상남도",
+    "제주특별자치도"
+  ]
+}
