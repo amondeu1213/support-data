@@ -1,6 +1,6 @@
 /************************************************************
  *  SUPPORT FINDER v3 — 정적 UI 전용 (Blogger 본 블로그용)
- *  - 특수문자(·) 자동 변환 문제 해결 → 안전한 bullet(•) 사용
+ *  - 특수문자(점 ·, bullet •) 제거 → 안전한 ASCII 구분자 사용
  ************************************************************/
 
 /* =========================================================
@@ -26,8 +26,8 @@ const PAGE_SIZE = 8;
 const $  = id  => document.getElementById(id);
 const $$ = sel => Array.from(document.querySelectorAll(sel));
 
-/* 안전한 bullet 문자 */
-const SEP = " • ";
+/* ✅ 안전한 ASCII 구분자만 사용 (특수문자 X) */
+const SEP = " | ";
 
 /* =========================================================
    PARSE HELPERS
@@ -58,10 +58,10 @@ function parseDeadlineDays(str){
 ========================================================= */
 function calcChanceText(item){
   let score = 0;
-  const ageMatch = !selectedAges.length || (item.ages || []).some(a => selectedAges.includes(a));
+  const ageMatch    = !selectedAges.length || (item.ages || []).some(a => selectedAges.includes(a));
   const regionMatch = !selectedRegions.length || selectedRegions.includes(item.region);
 
-  if(ageMatch) score += 40;
+  if(ageMatch)    score += 40;
   if(regionMatch) score += 40;
   if(item.category) score += 20;
 
@@ -89,7 +89,7 @@ function calcDeadlineLevelText(deadline){
 
   const days = parseDeadlineDays(d);
   if(days == null) return "마감 일정 확인 필요";
-  if(days <= 7) return "매우 급함";
+  if(days <= 7)  return "매우 급함";
   if(days <= 30) return "임박";
   if(days <= 90) return "보통";
   return "여유 있음";
@@ -154,16 +154,20 @@ async function renderChipsFromConfig(){
 
       if(chip.dataset.age){
         const v = chip.dataset.age;
-        chip.classList.contains("active")
-          ? selectedAges.push(v)
-          : selectedAges = selectedAges.filter(x=>x!==v);
+        if(chip.classList.contains("active")){
+          if(!selectedAges.includes(v)) selectedAges.push(v);  // ✅ 중복 방지
+        }else{
+          selectedAges = selectedAges.filter(x=>x!==v);
+        }
       }
 
       if(chip.dataset.region){
         const v = chip.dataset.region;
-        chip.classList.contains("active")
-          ? selectedRegions.push(v)
-          : selectedRegions = selectedRegions.filter(x=>x!==v);
+        if(chip.classList.contains("active")){
+          if(!selectedRegions.includes(v)) selectedRegions.push(v); // ✅ 중복 방지
+        }else{
+          selectedRegions = selectedRegions.filter(x=>x!==v);
+        }
       }
 
       renderTags();
@@ -182,11 +186,15 @@ function renderTags(){
 }
 
 /* =========================================================
-   SEARCH
+   SEARCH & SORT
 ========================================================= */
 function applySort(){
   if(currentSort === "deadline"){
-    filtered.sort((a,b)=> parseDeadlineDays(a.deadline) - parseDeadlineDays(b.deadline));
+    filtered.sort((a,b)=>{
+      const da = parseDeadlineDays(a.deadline) ?? 9999;
+      const db = parseDeadlineDays(b.deadline) ?? 9999;
+      return da - db;
+    });
   } else if(currentSort === "amount"){
     filtered.sort((a,b)=> parseAmountNumber(b.amount) - parseAmountNumber(a.amount));
   }
@@ -194,7 +202,7 @@ function applySort(){
 
 function search(){
   filtered = ALL_SUPPORTS.filter(item=>{
-    const ageOK = !selectedAges.length || (item.ages || []).some(a => selectedAges.includes(a));
+    const ageOK    = !selectedAges.length || (item.ages || []).some(a => selectedAges.includes(a));
     const regionOK = !selectedRegions.length || selectedRegions.includes(item.region);
     return ageOK && regionOK;
   });
@@ -210,6 +218,7 @@ function search(){
         <b>조건에 맞는 지원금이 없습니다.</b>
       </div>
     `;
+    $("resultCount").textContent = "0개";
     $("loadMore").style.display = "none";
     return;
   }
@@ -222,7 +231,7 @@ function search(){
    RENDER CARDS
 ========================================================= */
 function renderMore(){
-  const grid = $("cardGrid");
+  const grid  = $("cardGrid");
   const slice = filtered.slice(visible, visible + PAGE_SIZE);
 
   slice.forEach(item=>{
@@ -233,7 +242,7 @@ function renderMore(){
       <div class="sf3-badge-region">${item.region}</div>
       <div class="sf3-card-title">${item.title}</div>
       <div class="sf3-card-desc">${item.summary}</div>
-      <div class="sf3-card-deadline">마감: ${item.deadline}</div>
+      <div class="sf3-card-deadline">마감: ${item.deadline || "확인 필요"}</div>
     `;
 
     card.onclick = ()=> openModal(item);
@@ -245,13 +254,14 @@ function renderMore(){
 }
 
 /* =========================================================
-   DETAIL PAGE META 출력 개선 (• 적용)
+   META 출력 (ASCII SEP 사용)
 ========================================================= */
 function buildMeta(item){
   const region = item.region || "-";
   const ages   = (item.ages || []).join(", ") || "-";
   const cat    = item.category || "-";
 
+  // 👇 이제 여기엔 특수문자 없음
   return `${region}${SEP}${ages}${SEP}${cat}`;
 }
 
@@ -262,9 +272,8 @@ function openModal(item){
   CURRENT = item;
 
   $("sf3ModalTitle").textContent = item.title;
-  $("sf3ModalDesc").textContent  = item.summary;
+  $("sf3ModalDesc").textContent  = item.summary || "";
 
-  /* 여기! Bullet(•) 로 표시 */
   $("sf3ModalMeta").textContent = buildMeta(item);
 
   $("sf3ModalBackdrop").style.display = "flex";
@@ -282,19 +291,19 @@ function openDetail(item){
 
   $("sf3DetailSection").style.display = "block";
 
-  $("sf3DetailTitle").textContent = item.title;
+  $("sf3DetailTitle").textContent = item.title || "";
 
   $("sf3DetailMeta").innerHTML = `
     <p>${buildMeta(item)}</p>
-    <p>마감: ${item.deadline}</p>
+    <p>마감: ${item.deadline || "확인 필요"}</p>
   `;
 
   $("sf3SummaryChance").textContent        = calcChanceText(item);
-  $("sf3SummaryAmount").textContent        = item.amount;
+  $("sf3SummaryAmount").textContent        = item.amount || "";
   $("sf3SummaryDifficulty").textContent    = calcDifficultyText(item);
   $("sf3SummaryDeadlineLevel").textContent = calcDeadlineLevelText(item.deadline);
 
-  $("sf3DetailOverview").innerHTML = `<p>${item.overview}</p>`;
+  $("sf3DetailOverview").innerHTML = `<p>${item.overview || ""}</p>`;
   $("sf3DetailTarget").innerHTML   = `<p>${item.detail?.target || ""}</p>`;
   $("sf3DetailBenefit").innerHTML  = `<p>${item.detail?.benefit || ""}</p>`;
   $("sf3DetailMethod").innerHTML   = `<p>${item.detail?.method || ""}</p>`;
@@ -312,10 +321,10 @@ function openDetail(item){
    CTA
 ========================================================= */
 function bindModalCtas(){
-  $("sf3ModalCtaMain").onclick = ()=> window.open(CTA1_URL, "_blank");
+  $("sf3ModalCtaMain").onclick  = ()=> window.open(CTA1_URL, "_blank");
   $("sf3DetailCtaMain").onclick = ()=> window.open(CTA1_URL, "_blank");
 
-  $("sf3ModalCtaSub").onclick = ()=> window.open(CTA2_URL, "_blank");
+  $("sf3ModalCtaSub").onclick  = ()=> window.open(CTA2_URL, "_blank");
   $("sf3DetailCtaSub").onclick = ()=> window.open(CTA2_URL, "_blank");
 
   $("sf3ModalDetailBtn").onclick = ()=>{
@@ -339,14 +348,14 @@ async function init(){
 
 function bindEvents(){
   $("searchBtn").onclick = search;
-  $("loadMore").onclick = renderMore;
+  $("loadMore").onclick  = renderMore;
 
   $$(".sf3-sort-btn").forEach(btn=>{
     btn.onclick = ()=>{
       $$(".sf3-sort-btn").forEach(b=>b.classList.remove("active"));
       btn.classList.add("active");
-      currentSort = btn.dataset.sort;
-      search();
+      currentSort = btn.dataset.sort || "default";
+      if(filtered.length) search();
     };
   });
 
